@@ -1,0 +1,2452 @@
+local TS = game:GetService("TweenService")
+local UIS = game:GetService("UserInputService")
+
+local Lib = {}
+
+function Lib:NewUI()
+	--// Yea i did write this by hand, i want kms
+	
+	local ScreenGui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+	local MainF = Instance.new("Frame", ScreenGui)
+	
+	local Shadow = Instance.new("ImageLabel", MainF)
+	local UI = Instance.new("Frame", MainF) --// This time is for real
+	
+	local TopF = Instance.new("Frame", UI)
+	local NameF = Instance.new("Frame", UI)
+	local TabsF = Instance.new("Frame", UI)
+	local ContainerF = Instance.new("Folder", UI)
+	local SearchF = Instance.new("Frame", UI)
+	
+	local UICorner1 = Instance.new("UICorner", UI)
+	local UIGrad1 = Instance.new("UIGradient", UI)
+	
+	--// Top Things	
+	local Line = Instance.new("Frame",TopF)
+	local SBText = Instance.new("TextLabel", TopF)
+	local MiniClose = Instance.new("Frame", TopF)
+	local TabName = Instance.new("TextLabel", TopF)
+	local SBLogo = Instance.new("Frame", TopF)
+	
+	--// SiBin Logo
+	local UIGrad2 = Instance.new("UIGradient", SBText)
+	
+	--// Close and Minimize
+	local Line2 = Instance.new("Frame", MiniClose)
+	local CloseTxt = Instance.new("TextLabel", MiniClose)
+	local MiniText = Instance.new("TextLabel", MiniClose)
+	local CloseBtt = Instance.new("TextButton", MiniClose)
+	local MinimizeBtt = Instance.new("TextButton", MiniClose)
+	
+	local UICorner2 = Instance.new("UICorner", MiniClose)
+	local UIStroke1 = Instance.new("UIStroke", MiniClose)
+	
+	--//SB Icon
+	local UICorner3 = Instance.new("UICorner", SBLogo)
+	local UIStroke2 = Instance.new("UIStroke", SBLogo)
+	
+	--//Player Name
+	local IconF = Instance.new("Frame", NameF)
+	local PlrNameTxt = Instance.new("TextLabel", NameF)
+	local StatusF = Instance.new("Frame", NameF)
+
+	local HeadShot = Instance.new("ImageLabel", IconF)	
+
+	local UICorner4 = Instance.new("UICorner", NameF)
+	local UIStroke3 = Instance.new("UIStroke", NameF)
+
+	local UICorner5 = Instance.new("UICorner", IconF)
+
+	local UICorner6 = Instance.new("UICorner", HeadShot) --67 hehehehhehehhh
+	local UICorner7 = Instance.new("UICorner", StatusF)
+	
+	--//Tabs
+	local UICorner8 = Instance.new("UICorner", TabsF)
+	local UIListLayout1 = Instance.new("UIListLayout", TabsF)
+	local UIStroke4 = Instance.new("UIStroke", TabsF)
+	
+	--//Search
+	local SIcon = Instance.new("ImageLabel", SearchF)
+	
+	local SearchTextBox = Instance.new("TextBox", SearchF)
+	local UICorner9 = Instance.new("UICorner", SearchF)
+	local UIStroke5 = Instance.new("UIStroke", SearchF)
+	
+	
+	ScreenGui.IgnoreGuiInset = true
+	ScreenGui.ResetOnSpawn = false
+	ScreenGui.Name = "SiBin"
+	
+	MainF.BorderSizePixel = 0
+	MainF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	MainF.AnchorPoint = Vector2.new(0.5, 0.5)
+	MainF.Size = UDim2.new(1, 0, 1, 0)
+	MainF.Position = UDim2.new(0.5, 0, 0.5, 0)
+	MainF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	MainF.Name = "Main"
+	MainF.BackgroundTransparency = 1
+	
+	
+	Shadow.SliceCenter = Rect.new(95, 95, 205, 205)
+	Shadow.ScaleType = Enum.ScaleType.Slice
+	Shadow.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Shadow.ImageTransparency = 0.5
+	Shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	Shadow.AnchorPoint = Vector2.new(0.5, 0.5)
+	Shadow.Image = "rbxassetid://7912134082"
+	Shadow.Size = UDim2.new(0, 652, 0, 428)
+	Shadow.BorderColor3 = Color3.fromRGB(28, 43, 54)
+	Shadow.BackgroundTransparency = 1
+	Shadow.Name = "Shadow"
+	Shadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+	
+	UI.BorderSizePixel = 0
+	UI.BackgroundColor3 = Color3.fromRGB(53, 81, 66)
+	UI.AnchorPoint = Vector2.new(0.5, 0.5)
+	UI.Size = UDim2.new(0, 587, 0, 365)
+	UI.Position = UDim2.new(0.5, 0, 0.5, 0)
+	UI.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	UI.Name = "UI"
+	UI.BackgroundTransparency = 0.1
+	
+	
+	UICorner1.CornerRadius = UDim.new(0, 6)
+	
+	UIGrad1.Rotation = 45
+	UIGrad1.Color = ColorSequence.new{
+		ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),
+		ColorSequenceKeypoint.new(0.509, Color3.fromRGB(158, 158, 158)),
+		ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))
+	}
+	
+	TopF.BorderSizePixel = 0
+	TopF.BackgroundColor3 = Color3.fromRGB(53, 81, 66)
+	TopF.Size = UDim2.new(0.99984, 0, -0.0239, 50)
+	TopF.Position = UDim2.new(0.00008, 0, -0, 0)
+	TopF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TopF.Name = "Top"
+	TopF.BackgroundTransparency = 1
+	
+	
+	Line.BorderSizePixel = 0
+	Line.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+	Line.Size = UDim2.new(1, 0, 0, 1)
+	Line.Position = UDim2.new(0, 0, 1, 0)
+	Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Line.Name = "Line"
+	
+	SBText.TextWrapped = true
+	SBText.BorderSizePixel = 0
+	SBText.TextSize = 14
+	SBText.TextXAlignment = Enum.TextXAlignment.Left
+	SBText.TextScaled = true
+	SBText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SBText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	SBText.TextColor3 = Color3.fromRGB(255, 255, 255)
+	SBText.BackgroundTransparency = 1
+	SBText.AnchorPoint = Vector2.new(0.5, 0.5)
+	SBText.Size = UDim2.new(0, 90, 0, 23)
+	SBText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	SBText.Text = "SiBin"
+	SBText.Position = UDim2.new(0.15, 0, 0.5, 0)
+	
+	
+	UIGrad2.Rotation = 90
+	UIGrad2.Color = ColorSequence.new{
+		ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),
+		ColorSequenceKeypoint.new(0.493, Color3.fromRGB(255, 255, 255)),
+		ColorSequenceKeypoint.new(1.000, Color3.fromRGB(92, 140, 114))
+	}
+	
+	MiniClose.BorderSizePixel = 0
+	MiniClose.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	MiniClose.AnchorPoint = Vector2.new(0.5, 0.5)
+	MiniClose.Size = UDim2.new(0, 58, 0, 25)
+	MiniClose.Position = UDim2.new(0.931, 0, 0.5, 0)
+	MiniClose.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	MiniClose.Name = "Btts"
+	MiniClose.BackgroundTransparency = 1
+	
+	
+	UIStroke1.Color = Color3.fromRGB(92, 140, 114)
+	
+	Line2.BorderSizePixel = 0
+	Line2.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+	Line2.AnchorPoint = Vector2.new(0.5, 0.5)
+	Line2.Size = UDim2.new(0, 1, 1.03005, 0)
+	Line2.Position = UDim2.new(0.49108, 0, 0.4795, 0)
+	Line2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Line2.Name = "Line"
+	
+	CloseTxt.TextWrapped = true
+	CloseTxt.BorderSizePixel = 0
+	CloseTxt.TextSize = 20
+	CloseTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CloseTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	CloseTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+	CloseTxt.BackgroundTransparency = 1
+	CloseTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+	CloseTxt.Size = UDim2.new(0.50873, 0, 0.90582, 0)
+	CloseTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	CloseTxt.Text = "X"
+	CloseTxt.Position = UDim2.new(0.74, 0, 0.48, 0)
+
+	MiniText.TextWrapped = true
+	MiniText.BorderSizePixel = 0
+	MiniText.TextSize = 20
+	MiniText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	MiniText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	MiniText.TextColor3 = Color3.fromRGB(255, 255, 255)
+	MiniText.BackgroundTransparency = 1
+	MiniText.AnchorPoint = Vector2.new(0.5, 0.5)
+	MiniText.Size = UDim2.new(0.50873, 0, 0.90582, 0)
+	MiniText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	MiniText.Text = "-"
+	MiniText.Position = UDim2.new(0.26143, 0, 0.4795, 0)
+	
+	UICorner2.CornerRadius = UDim.new(1, 0)
+
+	CloseBtt.BorderSizePixel = 0
+	CloseBtt.TextTransparency = 1
+	CloseBtt.TextSize = 1
+	CloseBtt.TextColor3 = Color3.fromRGB(0, 0, 0)
+	CloseBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CloseBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	CloseBtt.AnchorPoint = Vector2.new(0, 0.5)
+	CloseBtt.BackgroundTransparency = 1
+	CloseBtt.Size = UDim2.new(0, 28, 1, 0)
+	CloseBtt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	CloseBtt.Text = ""
+	CloseBtt.Name = "CloseBtt"
+	CloseBtt.Position = UDim2.new(0.516, 0, 0.5, 0)
+
+	MinimizeBtt.BorderSizePixel = 0
+	MinimizeBtt.TextTransparency = 1
+	MinimizeBtt.TextSize = 1
+	MinimizeBtt.TextColor3 = Color3.fromRGB(0, 0, 0)
+	MinimizeBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	MinimizeBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	MinimizeBtt.AnchorPoint = Vector2.new(0, 0.5)
+	MinimizeBtt.BackgroundTransparency = 1
+	MinimizeBtt.Size = UDim2.new(0, 28, 1, 0)
+	MinimizeBtt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	MinimizeBtt.Text = ""
+	MinimizeBtt.Name = "MinimizeBtt"
+	MinimizeBtt.Position = UDim2.new(0.02, 0, 0.5, 0)
+	
+	TabName.TextWrapped = true
+	TabName.BorderSizePixel = 0
+	TabName.TextSize = 14
+	TabName.TextScaled = true
+	TabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TabName.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	TabName.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TabName.BackgroundTransparency = 1
+	TabName.AnchorPoint = Vector2.new(0.5, 0.5)
+	TabName.Size = UDim2.new(0, 178, 0, 16)
+	TabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TabName.Text = ""
+	TabName.Name = "TabName"
+	TabName.Position = UDim2.new(0.5, 0, 0.5, 0)
+	
+	SBLogo.BorderSizePixel = 0
+	SBLogo.BackgroundColor3 = Color3.fromRGB(64, 98, 79)
+	SBLogo.AnchorPoint = Vector2.new(0.5, 0.5)
+	SBLogo.Size = UDim2.new(0, 23, 0, 23)
+	SBLogo.Position = UDim2.new(0.0404, 0, 0.5, 0)
+	SBLogo.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	SBLogo.Name = "Icon"
+
+	UICorner3.CornerRadius = UDim.new(0, 6)
+
+	UIStroke2.Color = Color3.fromRGB(92, 140, 114)
+	
+	--// Name	
+	NameF.ZIndex = 2
+	NameF.BorderSizePixel = 0
+	NameF.BackgroundColor3 = Color3.fromRGB(48, 73, 59)
+	NameF.ClipsDescendants = true
+	NameF.Size = UDim2.new(0, 45, 0, 45)
+	NameF.Position = UDim2.new(0.018, 0, 0.84773, 0)
+	NameF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	NameF.Name = "Name"
+	NameF.BackgroundTransparency = 0.1
+
+	UICorner4.CornerRadius = UDim.new(1, 0)
+	
+	UIStroke3.Color = Color3.fromRGB(92, 140, 114)
+	
+	IconF.BorderSizePixel = 0
+	IconF.BackgroundColor3 = Color3.fromRGB(64, 98, 79)
+	IconF.AnchorPoint = Vector2.new(0, 0.5)
+	IconF.Size = UDim2.new(0, 30, 0, 30)
+	IconF.Position = UDim2.new(0, 8, 0.5, 0)
+	IconF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	IconF.Name = "Icon"
+	IconF.ZIndex = 2
+
+	UICorner5.CornerRadius = UDim.new(1, 0)
+
+	HeadShot.BorderSizePixel = 0
+	HeadShot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HeadShot.AnchorPoint = Vector2.new(0.5, 0.5)
+	HeadShot.Size = UDim2.new(0, 23, 0, 23)
+	HeadShot.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	HeadShot.BackgroundTransparency = 1
+	HeadShot.Name = "HeadShot"
+	HeadShot.Position = UDim2.new(0.5, 0, 0.5, 0)
+	HeadShot.Image = game.Players:GetUserThumbnailAsync(game.Players.LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+	HeadShot.ZIndex = 2
+	
+	UICorner6.CornerRadius = UDim.new(1, 0)
+
+	PlrNameTxt.TextWrapped = true
+	PlrNameTxt.BorderSizePixel = 0
+	PlrNameTxt.TextSize = 14
+	PlrNameTxt.TextXAlignment = Enum.TextXAlignment.Left
+	PlrNameTxt.TextScaled = true
+	PlrNameTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	PlrNameTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	PlrNameTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+	PlrNameTxt.BackgroundTransparency = 1
+	PlrNameTxt.AnchorPoint = Vector2.new(0, 0.5)
+	PlrNameTxt.Size = UDim2.new(0, 92, 0, 16)
+	PlrNameTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	PlrNameTxt.Text = game.Players.LocalPlayer.Name
+	PlrNameTxt.Name = "PlrName"
+	PlrNameTxt.Position = UDim2.new(0.01774, 45, 0.51556, 0)
+	PlrNameTxt.ZIndex = 2
+
+	StatusF.BorderSizePixel = 0
+	StatusF.BackgroundColor3 = Color3.fromRGB(57, 255, 57)
+	StatusF.AnchorPoint = Vector2.new(0, 0.5)
+	StatusF.Size = UDim2.new(0, 7, 0, 7)
+	StatusF.Position = UDim2.new(0.04928, 125, 0.51556, 0)
+	StatusF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	StatusF.Name = "Status"
+	StatusF.ZIndex = 2
+
+	UICorner7.CornerRadius = UDim.new(1, 0)
+	
+	--// Tab Frame
+	TabsF.ZIndex = 2
+	TabsF.BorderSizePixel = 0
+	TabsF.BackgroundColor3 = Color3.fromRGB(48, 73, 59)
+	TabsF.Size = UDim2.new(0, 45, 0, 0)
+	TabsF.Position = UDim2.new(0.018, 0, 0.485, 0)
+	TabsF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TabsF.Name = "Tabs"
+	TabsF.BackgroundTransparency = 0.1
+	TabsF.AnchorPoint = Vector2.new(0, 0.5)
+	
+	UICorner8.CornerRadius = UDim.new(1, 0)
+	
+	UIListLayout1.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout1.Padding = UDim.new(0, 9)
+	UIListLayout1.VerticalAlignment = Enum.VerticalAlignment.Center
+	UIListLayout1.SortOrder = Enum.SortOrder.LayoutOrder
+	
+	UIStroke4.Color = Color3.fromRGB(92, 140, 114)
+	
+	--//Container Folder
+	ContainerF.Name = "Containers"
+	
+	SearchF.BorderSizePixel = 0
+	SearchF.BackgroundColor3 = Color3.fromRGB(48, 73, 59)
+	SearchF.Size = UDim2.new(0, 229, 0, 30)
+	SearchF.Position = UDim2.new(0.12579, 0, 0.15638, 0)
+	SearchF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	SearchF.Name = "Search"
+	SearchF.BackgroundTransparency = 0.3
+
+	UICorner9.CornerRadius = UDim.new(0, 6)
+		
+	UIStroke5.Color = Color3.fromRGB(92, 140, 114)
+
+	SIcon.BorderSizePixel = 0
+	SIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SIcon.AnchorPoint = Vector2.new(0.5, 0.5)
+	SIcon.Image = "http://www.roblox.com/asset/?id=6031154871"
+	SIcon.Size = UDim2.new(0, 16, 0, 16)
+	SIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	SIcon.BackgroundTransparency = 1
+	SIcon.Position = UDim2.new(0.07, 0, 0.5, 0)
+	SIcon.Name = "Icon"
+	
+	SearchTextBox.TextXAlignment = Enum.TextXAlignment.Left
+	SearchTextBox.BorderSizePixel = 0
+	SearchTextBox.TextWrapped = true
+	SearchTextBox.TextSize = 14
+	SearchTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+	SearchTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SearchTextBox.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	SearchTextBox.AnchorPoint = Vector2.new(0.5, 0.5)
+	SearchTextBox.PlaceholderText = "Search"
+	SearchTextBox.Size = UDim2.new(0, 194, 0, 19)
+	SearchTextBox.Position = UDim2.new(0.55022, 0, 0.5, 0)
+	SearchTextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	SearchTextBox.Text = ""
+	SearchTextBox.BackgroundTransparency = 1
+	
+	local AllItems = {}
+	local AllSections = {}
+
+	local isSearching = false
+
+	local function registerItem(frame, name, sectionRef)
+		table.insert(AllItems, {
+			frame = frame,
+			name = string.lower(name),
+			section = sectionRef
+		})
+	end
+
+	local function registerSection(sectionF, secBtt, arrowIcon, isOpenRef, uiListLayout3, line1)
+		table.insert(AllSections, {
+			sectionF = sectionF,
+			secBtt = secBtt,
+			arrowIcon = arrowIcon,
+			isOpenRef = isOpenRef,
+			uiListLayout3 = uiListLayout3,
+			line1 = line1
+		})
+	end
+
+	local function openSectionRaw(sec)
+		local contentHeight = sec.uiListLayout3.AbsoluteContentSize.Y
+		sec.sectionF.Size = UDim2.new(0, 494, 0, 33 + contentHeight)
+		sec.arrowIcon.Rotation = 0
+		sec.line1.Visible = true
+	end
+
+	local function closeSectionRaw(sec)
+		sec.sectionF.Size = UDim2.new(0, 494, 0, 33)
+		sec.arrowIcon.Rotation = 180
+	end
+
+	SearchTextBox:GetPropertyChangedSignal("Text"):Connect(function()
+		local query = string.lower(SearchTextBox.Text)
+
+		if query == "" then
+			isSearching = false
+
+			for _, item in pairs(AllItems) do
+				item.frame.Visible = true
+			end
+
+			task.defer(function()
+				for _, sec in pairs(AllSections) do
+					sec.secBtt.Active = true
+					sec.arrowIcon.Visible = true
+
+					if sec.isOpenRef.value then
+						openSectionRaw(sec)
+					else
+						closeSectionRaw(sec)
+					end
+				end
+			end)
+
+			return
+		end
+
+		isSearching = true
+
+		for _, sec in pairs(AllSections) do
+			sec.secBtt.Active = false
+			sec.arrowIcon.Visible = false
+			openSectionRaw(sec)
+		end
+
+		for _, item in pairs(AllItems) do
+			item.frame.Visible = string.find(item.name, query, 1, true) ~= nil
+		end
+
+		task.defer(function()
+			for _, sec in pairs(AllSections) do
+				local contentHeight = sec.uiListLayout3.AbsoluteContentSize.Y
+				sec.sectionF.Size = UDim2.new(0, 494, 0, 33 + contentHeight)
+			end
+		end)
+	end)
+	
+	--// UI Drag system	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	UI.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = UI.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input == dragInput and dragging and UI.Size then			
+			local delta = input.Position - dragStart
+			local dragTime = .04
+			local SmoothDrag = {}
+
+			SmoothDrag.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+
+			local TweenUI = TS:Create(UI, TweenInfo.new(dragTime), SmoothDrag)
+			TweenUI:Play()
+
+			local TweenShadow = TS:Create(Shadow, TweenInfo.new(dragTime), SmoothDrag)
+			TweenShadow:Play()			
+		end
+	end)
+	
+	--//NameF System
+	
+	NameF.MouseEnter:Connect(function()
+		TS:Create(NameF, TweenInfo.new(.2), {
+			Size = UDim2.new(0, 150, 0, 45)
+		}):Play()
+	end)
+	
+	NameF.MouseLeave:Connect(function()
+		TS:Create(NameF, TweenInfo.new(.2), {
+			Size = UDim2.new(0, 45, 0, 45)
+		}):Play()
+	end)
+	
+	local Tabs = {}
+	local TabCount = 0
+	local ActiveTab
+	
+	function Tabs:NewTab(Icon:string, TabNameS:string)
+		TabNameS = TabNameS or "New Tab"
+		Icon = Icon or "rbxassetid://2790173610"
+		
+		TabCount += 1
+		
+		local Tab = Instance.new("Frame", TabsF)
+		local TabIcon = Instance.new("ImageLabel", Tab)
+		local TabNameF = Instance.new("Frame", Tab)
+		local TabNameTxt = Instance.new("TextLabel", TabNameF)
+		
+		local Btt = Instance.new("TextButton", Tab)
+		
+		local UICorner9 = Instance.new("UICorner", Tab)
+		local UIStroke5 = Instance.new("UIStroke", Tab)
+		local UIGrad3 = Instance.new("UIGradient", TabIcon)
+		local UICorner10 = Instance.new("UICorner", TabNameF)
+		local UIStroke6 = Instance.new("UIStroke", TabNameF)
+		
+		local TabContainer = Instance.new("ScrollingFrame", ContainerF)
+		
+		local Invisible1 = Instance.new("Frame", TabContainer)
+		local Invisible2 = Instance.new("Frame", TabContainer)
+		
+		Tab.BorderSizePixel = 0
+		Tab.BackgroundColor3 = Color3.fromRGB(63, 97, 77)
+		Tab.Size = UDim2.new(0, 32, 0, 32)
+		Tab.Position = UDim2.new(0.38, 0, 0.10672, 0)
+		Tab.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Tab.BackgroundTransparency = 1
+		Tab.ZIndex = 2
+
+		UICorner9.CornerRadius = UDim.new(1, 0)
+
+		UIStroke5.Transparency = 1
+		UIStroke5.Color = Color3.fromRGB(92, 140, 114)
+
+		TabIcon.AnchorPoint = Vector2.new(0.5, 0.5)
+		TabIcon.Image = Icon
+		TabIcon.Size = UDim2.new(0, 23, 0, 23)
+		TabIcon.BackgroundTransparency = 1
+		TabIcon.Name = "Icon"
+		TabIcon.Position = UDim2.new(0.5, 0, 0.5, 0)
+		TabIcon.ZIndex = 2
+
+		UIGrad3.Rotation = 90
+		UIGrad3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(0.493, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(92, 140, 114))}
+
+		Btt.BorderSizePixel = 0
+		Btt.TextTransparency = 1
+		Btt.TextSize = 1
+		Btt.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+		Btt.AnchorPoint = Vector2.new(0.5, 0.5)
+		Btt.BackgroundTransparency = 1
+		Btt.Size = UDim2.new(1, 0, 1, 0)
+		Btt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Btt.Text = ""
+		Btt.Name = "Btt"
+		Btt.Position = UDim2.new(0.5, 0, 0.5, 0)
+		Btt.ZIndex = 2
+
+		TabNameF.ZIndex = 10
+		TabNameF.BorderSizePixel = 0
+		TabNameF.BackgroundColor3 = Color3.fromRGB(48, 73, 59)
+		TabNameF.AnchorPoint = Vector2.new(0, 0.5)
+		TabNameF.ClipsDescendants = true
+		TabNameF.Size = UDim2.new(0,0, 0.731, 0)
+		TabNameF.Position = UDim2.new(1.406, 0, 0.5, 0)
+		TabNameF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TabNameF.BackgroundTransparency = 0.05
+		TabNameF.ZIndex = 2
+		TabNameF.Visible = false
+
+		TabNameTxt.TextWrapped = true
+		TabNameTxt.BorderSizePixel = 0
+		TabNameTxt.TextSize = 14
+		TabNameTxt.TextXAlignment = Enum.TextXAlignment.Left
+		TabNameTxt.TextScaled = true
+		TabNameTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TabNameTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+		TabNameTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TabNameTxt.BackgroundTransparency = 1
+		TabNameTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+		TabNameTxt.Size = UDim2.new(0, 64, 0, 13)
+		TabNameTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TabNameTxt.Text = TabNameS
+		TabNameTxt.Name = "ThingName"
+		TabNameTxt.Position = UDim2.new(0, 40, 0, 11)
+		TabNameTxt.ZIndex = 2
+		
+		Invisible1.BorderSizePixel = 0
+		Invisible1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Invisible1.Size = UDim2.new(1, 0, 0, 0)
+		Invisible1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Invisible1.Name = "Invisible"
+		Invisible1.LayoutOrder = -999999999
+		Invisible1.BackgroundTransparency = 1
+
+		Invisible2.BorderSizePixel = 0
+		Invisible2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Invisible2.Size = UDim2.new(1, 0, 0, 0)
+		Invisible2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Invisible2.Name = "Invisible"
+		Invisible2.LayoutOrder = 999999999
+		Invisible2.BackgroundTransparency = 1
+		
+		UICorner10.CornerRadius = UDim.new(0, 6)
+
+		UIStroke6.Color = Color3.fromRGB(92, 140, 114)
+		UIStroke6.Transparency = 1
+		
+		TabContainer.Active = true
+		TabContainer.BorderSizePixel = 0
+		TabContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
+		TabContainer.VerticalScrollBarInset = Enum.ScrollBarInset.Always
+		TabContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TabContainer.BorderMode = Enum.BorderMode.Middle
+		TabContainer.AutomaticCanvasSize = Enum.AutomaticSize.Y
+		TabContainer.Size = UDim2.new(0, 512, 0, 267)
+		TabContainer.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+		TabContainer.Position = UDim2.new(0.11049, 0, 0.23829, 0)
+		TabContainer.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TabContainer.ScrollBarThickness = 6
+		TabContainer.BackgroundTransparency = 1
+		TabContainer.Visible = false
+		
+		TabsF.Size = UDim2.new(0, 45, 0, TabCount * 42)
+		
+		Btt.MouseEnter:Connect(function()
+			if ActiveTab == Tab then return end
+
+			TS:Create(Tab, TweenInfo.new(.2), {
+				BackgroundColor3 = Color3.fromRGB(63, 97, 77),
+				Transparency = 0.3
+			}):Play()
+
+			local textSize = game.TextService:GetTextSize(
+				TabNameS,
+				13,
+				Enum.Font.Gotham,
+				Vector2.new(math.huge, 13)
+			)
+
+			local padding = 20
+			local targetWidth = textSize.X + padding
+
+			TabNameTxt.Size = UDim2.new(0, textSize.X, 0, 13)
+			TabNameTxt.Position = UDim2.new(0, padding / 2, 0.5, 0)
+			TabNameTxt.AnchorPoint = Vector2.new(0, 0.5)
+
+			TabNameF.Size = UDim2.new(0, 0, 0.731, 0)
+			TabNameF.Visible = true
+
+			TS:Create(TabNameF, TweenInfo.new(.2), {
+				Size = UDim2.new(0, targetWidth, 0.731, 0)
+			}):Play()
+
+			TS:Create(UIStroke6, TweenInfo.new(.2), {
+				Transparency = 0
+			}):Play()
+		end)
+		
+		Btt.MouseButton1Click:Connect(function()
+			if ActiveTab == Tab then return end
+
+			ActiveTab = Tab
+
+			TS:Create(Tab, TweenInfo.new(.2), {
+				BackgroundColor3 = Color3.fromRGB(63, 97, 78),
+				BackgroundTransparency = 0.3
+			}):Play()
+			
+			TS:Create(UIStroke5, TweenInfo.new(.2), {
+				Transparency = 0
+			}):Play()
+			
+			TS:Create(TabNameF, TweenInfo.new(.2), {
+				Size = UDim2.new(0, 0, 0.731, 0)
+			}):Play()
+			
+			TS:Create(UIStroke6, TweenInfo.new(.2), {
+				Transparency = 0
+			}):Play()
+			
+			task.delay(.2, function()
+				TabNameF.Visible = false
+			end)
+			
+			TabContainer.Visible = true
+			
+			TabName.Text = TabNameS
+			
+			for i, v in pairs(TabsF:GetChildren()) do
+				if v:IsA("Frame") and v ~= Tab then
+					TS:Create(v, TweenInfo.new(.2), {
+						BackgroundColor3 = Color3.fromRGB(63, 97, 77),
+						BackgroundTransparency = 1
+					}):Play()
+					
+					TS:Create(v:FindFirstChildOfClass("UIStroke"), TweenInfo.new(.2), {
+						Transparency = 1
+					}):Play()
+				end
+			end
+			
+			for i,v in pairs(ContainerF:GetChildren()) do
+				if v:IsA("ScrollingFrame") and v ~= TabContainer then
+					v.Visible = false
+				end
+			end
+		end)
+		
+		Btt.MouseLeave:Connect(function()
+			if ActiveTab == Tab then return end
+			
+			TS:Create(Tab, TweenInfo.new(.2), {
+				BackgroundColor3 = Color3.fromRGB(63, 97, 77),
+				Transparency = 1
+			}):Play()
+			
+			--//Tab Name
+			TS:Create(UIStroke6, TweenInfo.new(.2), {
+				Transparency = 0
+			}):Play()
+			
+			TS:Create(TabNameF, TweenInfo.new(.2), {
+				Size = UDim2.new(0, 0, 0.731, 0)
+			}):Play()
+			
+			task.delay(.2, function()
+				TabNameF.Visible = false
+			end)
+		end)
+		
+		
+		local Section = {}
+		
+		function Section:NewSection(SectionName:string)
+			SectionName = SectionName or "New Section"
+			
+			local SectionF = Instance.new("Frame", TabContainer)
+			local UIListLayout2 = Instance.new("UIListLayout", TabContainer)
+			
+			local TopFrame = Instance.new("Frame", SectionF)
+			local SecContainer = Instance.new("Frame", SectionF)
+			local UICorner11 = Instance.new("UICorner", SectionF)
+			
+			local Line1 = Instance.new("Frame", TopFrame)
+			local SectionNameTxt = Instance.new("TextLabel", TopFrame)
+			local ArrowIcon = Instance.new("ImageLabel", TopFrame)
+			local SecBtt = Instance.new("TextButton", TopFrame)
+			
+			local UIListLayout3 = Instance.new("UIListLayout", SecContainer)
+			local Invisble3 = Instance.new("Frame", SecContainer)
+			local Invisible4 = Instance.new("Frame", SecContainer)
+			
+			local SecIsOpen = false
+			local isOpenRef = { 
+				value = false 
+			}
+			
+			SectionF.BorderSizePixel = 0
+			SectionF.BackgroundColor3 = Color3.fromRGB(63, 96, 77)
+			SectionF.ClipsDescendants = true
+			SectionF.Size = UDim2.new(0, 494, 0, 33)
+			SectionF.Position = UDim2.new(0.01186, 0, -0.67096, 0)
+			SectionF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			SectionF.BackgroundTransparency = 0.6
+			
+			UICorner11.CornerRadius = UDim.new(0, 6)
+			
+			TopFrame.BorderSizePixel = 0
+			TopFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			TopFrame.Size = UDim2.new(0, 494, 0, 33)
+			TopFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			TopFrame.Name = "Top"
+			TopFrame.BackgroundTransparency = 1
+
+			Line1.BorderSizePixel = 0
+			Line1.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+			Line1.Size = UDim2.new(1, 0, 0, 1)
+			Line1.Position = UDim2.new(0, 0, 0, 34)
+			Line1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			Line1.Name = "Line"
+
+			SectionNameTxt.TextWrapped = true
+			SectionNameTxt.BorderSizePixel = 0
+			SectionNameTxt.TextSize = 14
+			SectionNameTxt.TextXAlignment = Enum.TextXAlignment.Left
+			SectionNameTxt.TextScaled = true
+			SectionNameTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			SectionNameTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+			SectionNameTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+			SectionNameTxt.BackgroundTransparency = 1
+			SectionNameTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+			SectionNameTxt.Size = UDim2.new(0, 178, 0, 16)
+			SectionNameTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			SectionNameTxt.Text = SectionName
+			SectionNameTxt.Name = "TabName"
+			SectionNameTxt.Position = UDim2.new(0, 100, 0, 18)
+
+			ArrowIcon.BorderSizePixel = 0
+			ArrowIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			ArrowIcon.AnchorPoint = Vector2.new(0.5, 0.5)
+			ArrowIcon.Image = "http://www.roblox.com/asset/?id=6034818379"
+			ArrowIcon.Size = UDim2.new(0, 28, 0, 28)
+			ArrowIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			ArrowIcon.BackgroundTransparency = 1
+			ArrowIcon.Name = "Arrow"
+			ArrowIcon.Position = UDim2.new(0, 475, 0, 18)
+			ArrowIcon.Rotation = 180
+
+			SecBtt.BorderSizePixel = 0
+			SecBtt.TextTransparency = 1
+			SecBtt.TextSize = 1
+			SecBtt.TextColor3 = Color3.fromRGB(0, 0, 0)
+			SecBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			SecBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+			SecBtt.AnchorPoint = Vector2.new(0.5, 0.5)
+			SecBtt.BackgroundTransparency = 1
+			SecBtt.Size = UDim2.new(1, 0, 1, 0)
+			SecBtt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			SecBtt.Text = ""
+			SecBtt.Name = "Btt"
+			SecBtt.Position = UDim2.new(0.5, 0, 0.5, 0)
+			
+			UIListLayout2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+			UIListLayout2.Padding = UDim.new(0, 5)
+			UIListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
+			
+			SecContainer.BorderSizePixel = 0
+			SecContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			SecContainer.Size = UDim2.new(1, 0, 0.84914, 0)
+			SecContainer.Position = UDim2.new(0, 0, 0, 34)
+			SecContainer.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			SecContainer.Name = "Container"
+			SecContainer.BackgroundTransparency = 1
+			
+			UIListLayout3.HorizontalAlignment = Enum.HorizontalAlignment.Center
+			UIListLayout3.Padding = UDim.new(0, 4)
+			UIListLayout3.SortOrder = Enum.SortOrder.LayoutOrder
+
+			Invisble3.BorderSizePixel = 0
+			Invisble3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Invisble3.Size = UDim2.new(1, 0, 0, 0)
+			Invisble3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			Invisble3.Name = "Invisible"
+			Invisble3.LayoutOrder = 999999999
+			Invisble3.BackgroundTransparency = 1
+
+			Invisible4.BorderSizePixel = 0
+			Invisible4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Invisible4.Size = UDim2.new(1, 0, 0, 0)
+			Invisible4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			Invisible4.Name = "Invisible"
+			Invisible4.LayoutOrder = -999999999
+			Invisible4.BackgroundTransparency = 1
+			
+			SecBtt.MouseButton1Click:Connect(function()
+				if isSearching then return end
+
+				SecIsOpen = not SecIsOpen
+				isOpenRef.value = SecIsOpen
+
+				if SecIsOpen then
+					TS:Create(ArrowIcon, TweenInfo.new(.2), { Rotation = 0 }):Play()
+					local contentHeight = UIListLayout3.AbsoluteContentSize.Y
+					TS:Create(SectionF, TweenInfo.new(.2), {
+						Size = UDim2.new(0, 494, 0, 33 + contentHeight)
+					}):Play()
+				else
+					TS:Create(ArrowIcon, TweenInfo.new(.2), { Rotation = 180 }):Play()
+					TS:Create(SectionF, TweenInfo.new(.2), {
+						Size = UDim2.new(0, 494, 0, 33)
+					}):Play()
+				end
+			end)
+			
+			registerSection(SectionF, SecBtt, ArrowIcon, isOpenRef, UIListLayout3, Line1)
+			
+			local Items = {}
+			
+			function Items:NewLabel(Text:string)
+				Text = Text or "New Label"
+				
+				local LabelF = Instance.new("Frame", SecContainer)
+				local LabelTxt = Instance.new("TextLabel", LabelF)
+				local IconF = Instance.new("Frame", LabelF)
+				local IconI = Instance.new("ImageLabel", IconF)
+				local UICorner12 = Instance.new("UICorner", IconF)
+				
+				LabelF.BorderSizePixel = 0
+				LabelF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				LabelF.Size = UDim2.new(0, 462, 0, 33)
+				LabelF.Position = UDim2.new(0.03333, 0, 0.02538, 0)
+				LabelF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				LabelF.Name = "Label"
+				LabelF.BackgroundTransparency = 1
+
+				LabelTxt.TextWrapped = true
+				LabelTxt.BorderSizePixel = 0
+				LabelTxt.TextSize = 14
+				LabelTxt.TextXAlignment = Enum.TextXAlignment.Left
+				LabelTxt.TextScaled = true
+				LabelTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				LabelTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				LabelTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				LabelTxt.BackgroundTransparency = 1
+				LabelTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+				LabelTxt.Size = UDim2.new(0, 420, 0, 16)
+				LabelTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				LabelTxt.Name = "ThingName"
+				LabelTxt.Position = UDim2.new(0.47451, 0, 0.5, 0)
+				LabelTxt.Text = Text
+
+				IconF.BorderSizePixel = 0
+				IconF.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+				IconF.AnchorPoint = Vector2.new(0.5, 0.5)
+				IconF.Size = UDim2.new(0, 20, 0, 20)
+				IconF.Position = UDim2.new(0.96, 0, 0.5, 0)
+				IconF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				IconF.Name = "Icon"
+
+				UICorner12.CornerRadius = UDim.new(1, 0)
+
+				IconI.BorderSizePixel = 0
+				IconI.AnchorPoint = Vector2.new(0.5, 0.5)
+				IconI.Image = "http://www.roblox.com/asset/?id=6035078890"
+				IconI.Size = UDim2.new(0, 16, 0, 16)
+				IconI.BackgroundTransparency = 1
+				IconI.Position = UDim2.new(0.5, 0, 0.5, 0)
+				
+				registerItem(LabelF, Text, SecContainer)
+			end
+			
+			function Items:NewButton(Text:string, Callback:() -> nil)
+				Text = Text or "New Button"
+				Callback = Callback or function() end
+				
+				local ButtonF = Instance.new("Frame", SecContainer)
+				local ButtonTxt = Instance.new("TextLabel", ButtonF)
+				local IconF = Instance.new("Frame", ButtonF)
+				local IconI = Instance.new("ImageLabel", IconF)
+				local Btt = Instance.new("TextButton", ButtonF)
+				local UICorner12 = Instance.new("UICorner", IconF)
+				
+				ButtonF.BorderSizePixel = 0
+				ButtonF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ButtonF.Size = UDim2.new(0, 462, 0, 33)
+				ButtonF.Position = UDim2.new(0.03333, 0, 0.02538, 0)
+				ButtonF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				ButtonF.Name = "Button"
+				ButtonF.BackgroundTransparency = 1
+
+				ButtonTxt.TextWrapped = true
+				ButtonTxt.BorderSizePixel = 0
+				ButtonTxt.TextSize = 14
+				ButtonTxt.TextXAlignment = Enum.TextXAlignment.Left
+				ButtonTxt.TextScaled = true
+				ButtonTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ButtonTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				ButtonTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				ButtonTxt.BackgroundTransparency = 1
+				ButtonTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+				ButtonTxt.Size = UDim2.new(0, 420, 0, 16)
+				ButtonTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				ButtonTxt.Text = Text
+				ButtonTxt.Name = "ThingName"
+				ButtonTxt.Position = UDim2.new(0, 219, 0, 16)
+
+				IconF.BorderSizePixel = 0
+				IconF.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+				IconF.AnchorPoint = Vector2.new(0.5, 0.5)
+				IconF.Size = UDim2.new(0, 20, 0, 20)
+				IconF.Position = UDim2.new(0.95887, 0, 0.48485, 0)
+				IconF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				IconF.Name = "Icon"
+
+				UICorner12.CornerRadius = UDim.new(1, 0)
+
+				IconI.BorderSizePixel = 0
+				IconI.AnchorPoint = Vector2.new(0.5, 0.5)
+				IconI.Image = "http://www.roblox.com/asset/?id=6034837797"
+				IconI.Size = UDim2.new(0, 12, 0, 12)
+				IconI.BackgroundTransparency = 1
+				IconI.Position = UDim2.new(0.5, 0, 0.5, 0)
+
+				Btt.BorderSizePixel = 0
+				Btt.TextTransparency = 1
+				Btt.TextSize = 1
+				Btt.TextColor3 = Color3.fromRGB(0, 0, 0)
+				Btt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Btt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				Btt.AnchorPoint = Vector2.new(0.5, 0.5)
+				Btt.BackgroundTransparency = 1
+				Btt.Size = UDim2.new(1, 0, 1, 0)
+				Btt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Btt.Text = ""
+				Btt.Name = "Btt"
+				Btt.Position = UDim2.new(0.5, 0, 0.5, 0)
+				
+				Btt.MouseButton1Click:Connect(function()
+					task.spawn(function()
+						Callback()
+					end)
+				end)
+				
+				registerItem(ButtonF, Text, SecContainer)
+			end
+			
+			function Items:NewToggle(Text:string, State:boolean, Callback:() -> nil)
+				Text = Text or "New Toggle"
+				State = State or false
+				Callback = Callback or function() end
+				
+				local ToggleF = Instance.new("Frame", SecContainer)
+				local ToggleTxt = Instance.new("TextLabel", ToggleF)
+				local ToggleIndicator = Instance.new("Frame", ToggleF)
+				local Ball = Instance.new("Frame", ToggleIndicator)
+				local Btt = Instance.new("TextButton", ToggleF)
+				local UICorner12 = Instance.new("UICorner", ToggleIndicator)
+				local UIStroke7 = Instance.new("UIStroke", ToggleIndicator)
+				local UICorner13 = Instance.new("UICorner", Ball)
+				
+				local OnOrOff = State
+				
+				ToggleF.BorderSizePixel = 0
+				ToggleF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleF.ClipsDescendants = true
+				ToggleF.Size = UDim2.new(0, 462, 0, 33)
+				ToggleF.Position = UDim2.new(0.03333, 0, 0.02538, 0)
+				ToggleF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				ToggleF.Name = "Toggle"
+				ToggleF.BackgroundTransparency = 1
+
+				ToggleTxt.TextWrapped = true
+				ToggleTxt.BorderSizePixel = 0
+				ToggleTxt.TextSize = 14
+				ToggleTxt.TextXAlignment = Enum.TextXAlignment.Left
+				ToggleTxt.TextScaled = true
+				ToggleTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				ToggleTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleTxt.BackgroundTransparency = 1
+				ToggleTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+				ToggleTxt.Size = UDim2.new(0, 405, 0, 16)
+				ToggleTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				ToggleTxt.Text = Text
+				ToggleTxt.Name = "ThingName"
+				ToggleTxt.Position = UDim2.new(0, 212, 0, 16)
+
+				ToggleIndicator.BorderSizePixel = 0
+				ToggleIndicator.AnchorPoint = Vector2.new(0.5, 0.5)
+				ToggleIndicator.Size = UDim2.new(0, 31, 0, 20)
+				ToggleIndicator.Position = UDim2.new(0, 438, 0, 16)
+				ToggleIndicator.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				ToggleIndicator.Name = "Icon"
+				ToggleIndicator.BackgroundTransparency = 0.3
+
+				UICorner12.CornerRadius = UDim.new(1, 0)
+				
+				Ball.BorderSizePixel = 0
+				Ball.AnchorPoint = Vector2.new(0.5, 0.5)
+				Ball.Size = UDim2.new(0, 16, 0, 16)
+				Ball.BorderColor3 = Color3.fromRGB(0, 0, 0)
+
+				UICorner13.CornerRadius = UDim.new(1, 0)
+
+				Btt.BorderSizePixel = 0
+				Btt.TextTransparency = 1
+				Btt.TextSize = 1
+				Btt.TextColor3 = Color3.fromRGB(0, 0, 0)
+				Btt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Btt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				Btt.AnchorPoint = Vector2.new(0.5, 0.5)
+				Btt.BackgroundTransparency = 1
+				Btt.Size = UDim2.new(1, 0, 1, 0)
+				Btt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Btt.Text = ""
+				Btt.Name = "Btt"
+				Btt.Position = UDim2.new(0.5, 0, 0.5, 0)
+				
+				if OnOrOff then
+					ToggleIndicator.BackgroundColor3 = Color3.fromRGB(136, 207, 168)
+					
+					Ball.BackgroundColor3 = Color3.fromRGB(167, 255, 207)
+					Ball.Position = UDim2.new(0.68, 0, 0.5, 0)
+					
+					UIStroke7.Color = Color3.fromRGB(167, 255, 207)
+				else
+					ToggleIndicator.BackgroundColor3 = Color3.fromRGB(66, 100, 81)
+
+					Ball.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+					Ball.Position = UDim2.new(0.32, 0, 0.5, 0)
+
+					UIStroke7.Color = Color3.fromRGB(92, 140, 114)
+				end
+				
+				task.spawn(function()
+					Callback(State)
+				end)
+				
+				Btt.MouseButton1Click:Connect(function()
+					OnOrOff = not OnOrOff
+					
+					if OnOrOff then
+						TS:Create(ToggleIndicator, TweenInfo.new(.2), {
+							BackgroundColor3 = Color3.fromRGB(136, 207, 168)
+						}):Play()
+
+						TS:Create(Ball, TweenInfo.new(.2), {
+							BackgroundColor3 = Color3.fromRGB(167, 255, 207),
+							Position = UDim2.new(0.68, 0, 0.5, 0)
+						}):Play()
+
+						TS:Create(UIStroke7, TweenInfo.new(.2), {
+							Color = Color3.fromRGB(167, 255, 207)
+						}):Play()
+					else
+						TS:Create(ToggleIndicator, TweenInfo.new(.2), {
+							BackgroundColor3 = Color3.fromRGB(66, 100, 81)
+						}):Play()
+						
+						TS:Create(Ball, TweenInfo.new(.2), {
+							BackgroundColor3 = Color3.fromRGB(92, 140, 114),
+							Position = UDim2.new(0.32, 0, 0.5, 0)
+						}):Play()
+						
+						TS:Create(UIStroke7, TweenInfo.new(.2), {
+							Color = Color3.fromRGB(92, 140, 114)
+						}):Play()
+					end
+					
+					task.spawn(function()
+						Callback(OnOrOff)
+					end)
+				end)
+				
+				registerItem(ToggleF, Text, SecContainer)
+			end
+			
+			function Items:NewSlider(Text:string, Min:number, Max:number, Start:number, Callback:() -> nil)
+				Text = Text or "New Slider"
+				Min = Min or 0
+				Max = Max or 100
+				Start = Start or 50
+				Callback = Callback or function() end
+				
+				local SliderF = Instance.new("Frame", SecContainer)
+				local SliderTxt = Instance.new("TextLabel", SliderF)
+				local TextInputF = Instance.new("Frame", SliderF)
+				local TextInputTextBox = Instance.new("TextBox", TextInputF)
+				local BarF = Instance.new("Frame", SliderF)
+				local BarReal = Instance.new("Frame", BarF) --// This one changes the size
+				local Circle = Instance.new("Frame", BarReal)
+				local Btt = Instance.new("TextButton", SliderF) --// This shit identify if im clicking and holding the slider
+				
+				local UICorner12 = Instance.new("UICorner", TextInputF)
+				local UIStroke7 = Instance.new("UIStroke", TextInputF)
+				local UICorner13 = Instance.new("UICorner", BarF)
+				local UICorner14 = Instance.new("UICorner", BarReal)
+				local UICorner15 = Instance.new("UICorner", Circle)
+				local UIStroke8 = Instance.new("UIStroke", Circle)
+				
+				local isDragging = false
+				local isHovering = false
+				local currentValue = Start
+				
+				SliderF.BorderSizePixel = 0
+				SliderF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SliderF.ClipsDescendants = true
+				SliderF.Size = UDim2.new(0, 462,0, 50)
+				SliderF.Position = UDim2.new(0.03239, 0, 0.2583, 0)
+				SliderF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				SliderF.Name = "Slider"
+				SliderF.BackgroundTransparency = 1
+
+				SliderTxt.TextWrapped = true
+				SliderTxt.BorderSizePixel = 0
+				SliderTxt.TextSize = 14
+				SliderTxt.TextXAlignment = Enum.TextXAlignment.Left
+				SliderTxt.TextScaled = true
+				SliderTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SliderTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				SliderTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				SliderTxt.BackgroundTransparency = 1
+				SliderTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+				SliderTxt.Size = UDim2.new(0, 405, 0, 16)
+				SliderTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				SliderTxt.Text = Text
+				SliderTxt.Name = "ThingName"
+				SliderTxt.Position = UDim2.new(0, 212, 0, 16)
+
+				TextInputF.ZIndex = 2
+				TextInputF.BorderSizePixel = 0
+				TextInputF.BackgroundColor3 = Color3.fromRGB(66, 100, 81)
+				TextInputF.AnchorPoint = Vector2.new(1, 0.5)
+				TextInputF.Size = UDim2.new(0, 31, 0, 20)
+				TextInputF.Position = UDim2.new(0, 454, 0, 16)
+				TextInputF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				TextInputF.Name = "Numb"
+				TextInputF.BackgroundTransparency = 0.3
+
+				UICorner12.CornerRadius = UDim.new(1, 0)
+
+				UIStroke7.Color = Color3.fromRGB(92, 140, 114)
+
+				TextInputTextBox.BorderSizePixel = 0
+				TextInputTextBox.TextWrapped = true
+				TextInputTextBox.TextSize = 14
+				TextInputTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TextInputTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextInputTextBox.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				TextInputTextBox.AnchorPoint = Vector2.new(0.5, 0.5)
+				TextInputTextBox.Size = UDim2.new(1, 0, 1, 0)
+				TextInputTextBox.Position = UDim2.new(0.5, 0, 0.5, 0)
+				TextInputTextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				TextInputTextBox.Text = tostring(Start)
+				TextInputTextBox.BackgroundTransparency = 1
+				TextInputTextBox.ZIndex = 2
+
+				BarF.BorderSizePixel = 0
+				BarF.BackgroundColor3 = Color3.fromRGB(66, 100, 81)
+				BarF.Size = UDim2.new(0, 444, 0, 3)
+				BarF.Position = UDim2.new(0, 8, 0, 40)
+				BarF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				BarF.Name = "Bar"
+				BarF.BackgroundTransparency = 0.1
+
+				UICorner13.CornerRadius = UDim.new(1, 0)
+
+				BarReal.BorderSizePixel = 0
+				BarReal.BackgroundColor3 = Color3.fromRGB(168, 255, 208)
+				BarReal.Size = UDim2.new(0, 302, 1, 0)
+				BarReal.Position = UDim2.new(0, 0, 0, 0)
+				BarReal.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				BarReal.Name = "Bar"
+
+				UICorner14.CornerRadius = UDim.new(1, 0)
+
+				Circle.BorderSizePixel = 0
+				Circle.BackgroundColor3 = Color3.fromRGB(168, 255, 208)
+				Circle.AnchorPoint = Vector2.new(0.5, 0.5)
+				Circle.Size = UDim2.new(0, 10, 0, 10)
+				Circle.Position = UDim2.new(1, 0, 0.5, 0)
+				Circle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Circle.Name = "Circle"
+
+				UICorner15.CornerRadius = UDim.new(1, 0)
+
+				UIStroke8.Thickness = 2
+				UIStroke8.Color = Color3.fromRGB(53, 81, 65)
+				UIStroke8.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				UIStroke8.BorderStrokePosition = Enum.BorderStrokePosition.Center
+
+				Btt.BorderSizePixel = 0
+				Btt.TextTransparency = 1
+				Btt.TextSize = 1
+				Btt.TextColor3 = Color3.fromRGB(0, 0, 0)
+				Btt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Btt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				Btt.AnchorPoint = Vector2.new(0.5, 0.5)
+				Btt.BackgroundTransparency = 1
+				Btt.Size = UDim2.new(0, 462, 0, 19)
+				Btt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Btt.Text = ""
+				Btt.Name = "Btt"
+				Btt.Position = UDim2.new(0, 231, 0, 41)
+				
+				local function updateInputSize()
+					local textSize = game.TextService:GetTextSize(
+						TextInputTextBox.Text,
+						14,
+						Enum.Font.Gotham,
+						Vector2.new(math.huge, 20)
+					)
+
+					local targetWidth = textSize.X + 16
+
+					TS:Create(TextInputF, TweenInfo.new(.1), {
+						Size = UDim2.new(0, targetWidth, 0, 20)
+					}):Play()
+
+					TextInputTextBox.Size = UDim2.new(1, 0, 1, 0)
+				end
+				
+				local function updateSlider(value)
+					value = math.clamp(math.round(value), Min, Max)
+					currentValue = value
+
+					local percent = (value - Min) / (Max - Min)
+
+					TS:Create(BarReal, TweenInfo.new(.1), {
+						Size = UDim2.new(percent, 0, 1, 0)
+					}):Play()
+
+					TextInputTextBox.Text = tostring(value)
+					updateInputSize()
+					Callback(value)
+				end
+
+				local function getValueFromMouse()
+					local barPos = BarF.AbsolutePosition.X
+					local barSize = BarF.AbsoluteSize.X
+					local mouseX = UIS:GetMouseLocation().X
+
+					local percent = math.clamp((mouseX - barPos) / barSize, 0, 1)
+					return Min + (Max - Min) * percent
+				end
+				
+				Btt.MouseEnter:Connect(function()
+					isHovering = true
+					TS:Create(Circle, TweenInfo.new(.2), {
+						Size = UDim2.new(0, 13, 0, 13)
+					}):Play()
+				end)
+				
+				Btt.MouseLeave:Connect(function()
+					isHovering = false
+					if isDragging then return end
+
+					TS:Create(Circle, TweenInfo.new(.2), {
+						Size = UDim2.new(0, 10, 0, 10)
+					}):Play()
+				end)
+				
+				Btt.MouseButton1Down:Connect(function()
+					isDragging = true
+
+					updateSlider(getValueFromMouse())
+				end)
+				
+				UIS.InputChanged:Connect(function(input)
+					if isDragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+						updateSlider(getValueFromMouse())
+					end
+				end)
+				
+				UIS.InputEnded:Connect(function(input)
+					if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						isDragging = false
+
+						if not isHovering then
+							TS:Create(Circle, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 10, 0, 10)
+							}):Play()
+						end
+					end
+				end)
+				
+				TextInputTextBox.FocusLost:Connect(function()
+					local num = tonumber(TextInputTextBox.Text)
+					if num then
+						updateSlider(num)
+					else
+						TextInputTextBox.Text = tostring(currentValue)
+					end
+				end)
+				
+				TextInputTextBox:GetPropertyChangedSignal("Text"):Connect(function()
+					updateInputSize()
+				end)
+				
+				updateSlider(Start)
+				
+				registerItem(SliderF, Text, SecContainer)
+			end
+			
+			function Items:NewKeybind(Text:string, Key:Enum.KeyCode, Callback:() ->  nil)
+				Text = Text or "New Keybind"
+				Key = Key or Enum.KeyCode.Unknown --// i will change for none if is unknown will show None
+				Callback = Callback or function() end
+				
+				local KeybindF = Instance.new("Frame", SecContainer)
+				local KeybindTxt = Instance.new("TextLabel", KeybindF)
+				local KeyIndicatorF = Instance.new("Frame", KeybindF)
+				local KeyIndicatorTxt = Instance.new("TextLabel", KeyIndicatorF)
+				local Btt = Instance.new("TextButton", KeybindF)
+				local UICorner12 = Instance.new("UICorner", KeyIndicatorF)
+				local UIStroke7 = Instance.new("UIStroke", KeyIndicatorF)
+				
+				local State = false
+				local IsKeySetting = false
+				local hasBeenSet = false
+				
+				KeybindF.BorderSizePixel = 0
+				KeybindF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				KeybindF.ClipsDescendants = true
+				KeybindF.Size = UDim2.new(0, 462, 0, 33)
+				KeybindF.Position = UDim2.new(0.03333, 0, 0.02538, 0)
+				KeybindF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				KeybindF.Name = "KeyBind"
+				KeybindF.BackgroundTransparency = 1
+
+				KeybindTxt.TextWrapped = true
+				KeybindTxt.BorderSizePixel = 0
+				KeybindTxt.TextSize = 14
+				KeybindTxt.TextXAlignment = Enum.TextXAlignment.Left
+				KeybindTxt.TextScaled = true
+				KeybindTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				KeybindTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				KeybindTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				KeybindTxt.BackgroundTransparency = 1
+				KeybindTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+				KeybindTxt.Size = UDim2.new(0, 405, 0, 16)
+				KeybindTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				KeybindTxt.Text = Text
+				KeybindTxt.Name = "ThingName"
+				KeybindTxt.Position = UDim2.new(0, 212, 0, 16)
+
+				KeyIndicatorF.BorderSizePixel = 0
+				KeyIndicatorF.BackgroundColor3 = Color3.fromRGB(66, 100, 81)
+				KeyIndicatorF.AnchorPoint = Vector2.new(1, 0.5)
+				KeyIndicatorF.Size = UDim2.new(0, 39, 0, 20)
+				KeyIndicatorF.Position = UDim2.new(0, 454, 0, 16)
+				KeyIndicatorF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				KeyIndicatorF.Name = "KeyF"
+				KeyIndicatorF.BackgroundTransparency = 0.3
+
+				UICorner12.CornerRadius = UDim.new(0, 6)
+
+				UIStroke7.Color = Color3.fromRGB(92, 140, 114)
+				UIStroke7.Thickness = 0
+				UIStroke7.Transparency = 1
+
+				KeyIndicatorTxt.TextWrapped = true
+				KeyIndicatorTxt.BorderSizePixel = 0
+				KeyIndicatorTxt.TextSize = 14
+				KeyIndicatorTxt.TextScaled = true
+				KeyIndicatorTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				KeyIndicatorTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				KeyIndicatorTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				KeyIndicatorTxt.BackgroundTransparency = 1
+				KeyIndicatorTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+				KeyIndicatorTxt.Size = UDim2.new(0.74564, 0, 0.74564, 0)
+				KeyIndicatorTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				KeyIndicatorTxt.Name = "Key"
+				KeyIndicatorTxt.Position = UDim2.new(0.5, 0, 0.5, 0)
+
+				Btt.BorderSizePixel = 0
+				Btt.TextTransparency = 1
+				Btt.TextSize = 1
+				Btt.TextColor3 = Color3.fromRGB(0, 0, 0)
+				Btt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Btt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				Btt.AnchorPoint = Vector2.new(0.5, 0.5)
+				Btt.BackgroundTransparency = 1
+				Btt.Size = UDim2.new(1, 0, 1, 0)
+				Btt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Btt.Text = ""
+				Btt.Name = "Btt"
+				Btt.Position = UDim2.new(0.5, 0, 0.5, 0)
+				
+				local function getKeyName(keyCode)
+					if keyCode == Enum.KeyCode.Unknown then
+						return "None"
+					end
+					return keyCode.Name
+				end
+
+				local function updateKeySize()
+					local textSize = game.TextService:GetTextSize(
+						KeyIndicatorTxt.Text,
+						14,
+						Enum.Font.Gotham,
+						Vector2.new(math.huge, 20)
+					)
+					KeyIndicatorF.Size = UDim2.new(0, textSize.X + 16, 0, 20)
+				end
+
+				KeyIndicatorTxt.Text = getKeyName(Key)
+				updateKeySize()
+
+				Btt.MouseButton1Click:Connect(function()
+					if IsKeySetting then return end
+					IsKeySetting = true
+
+					KeyIndicatorTxt.Text = "..."
+					
+					TS:Create(UIStroke7, TweenInfo.new(.2), {
+						Thickness = 1,
+						Transparency = 0 
+					}):Play()
+					
+					updateKeySize()
+
+					local KeySetter
+					KeySetter = UIS.InputBegan:Connect(function(Input, IsTyping)
+						if IsTyping then return end
+
+						Key = Input.KeyCode
+						IsKeySetting = false
+						hasBeenSet = true
+
+						KeyIndicatorTxt.Text = getKeyName(Key)
+						
+						if not State then
+							TS:Create(UIStroke7, TweenInfo.new(.2), { 
+								Transparency = 1, 
+								Thickness = 1 
+							}):Play()
+						else
+							TS:Create(UIStroke7, TweenInfo.new(.2), { 
+								Transparency = 0, 
+								Thickness = 1.5
+							}):Play()
+						end
+						
+						updateKeySize()
+
+						KeySetter:Disconnect()
+					end)
+				end)
+
+				UIS.InputBegan:Connect(function(Input, IsTyping)
+					if IsTyping then return end
+					if IsKeySetting then return end
+					if Key == Enum.KeyCode.Unknown then return end
+
+					if Input.KeyCode == Key then
+						if hasBeenSet then
+							hasBeenSet = false
+							return
+						end	
+						
+						State = not State
+						
+						if State then
+							TS:Create(UIStroke7, TweenInfo.new(.2), { 
+								Transparency = 0, 
+								Thickness = 1.5
+							}):Play()
+						else
+							TS:Create(UIStroke7, TweenInfo.new(.2), { 
+								Transparency = 1, 
+								Thickness = 1 
+							}):Play()
+						end
+						
+						Callback(State)
+					end
+				end)
+				
+				registerItem(KeybindF, Text, SecContainer)
+			end
+			
+			function Items:NewTextbox(Text:string, PresetText:string, Callback:() -> nil)
+				Text = Text or "New Textbox"
+				PresetText = PresetText or ""
+				Callback = Callback or function() end
+				
+				local TextboxF = Instance.new("Frame", SecContainer)
+				local TextboxTxt = Instance.new("TextLabel", TextboxF)
+				local TextIndicatorF = Instance.new("Frame", TextboxF)
+				local TextIndicatorTextBox = Instance.new("TextBox", TextIndicatorF)
+				
+				local UICorner12 = Instance.new("UICorner", TextIndicatorF)
+				local UIStroke7 = Instance.new("UIStroke", TextIndicatorF)
+				
+				TextboxF.BorderSizePixel = 0
+				TextboxF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextboxF.ClipsDescendants = true
+				TextboxF.Size = UDim2.new(0, 462, 0, 33)
+				TextboxF.Position = UDim2.new(0.03333, 0, 0.02538, 0)
+				TextboxF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				TextboxF.Name = "TextBox"
+				TextboxF.BackgroundTransparency = 1
+
+				TextboxTxt.TextWrapped = true
+				TextboxTxt.BorderSizePixel = 0
+				TextboxTxt.TextSize = 14
+				TextboxTxt.TextXAlignment = Enum.TextXAlignment.Left
+				TextboxTxt.TextScaled = true
+				TextboxTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextboxTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				TextboxTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TextboxTxt.BackgroundTransparency = 1
+				TextboxTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+				TextboxTxt.Size = UDim2.new(0, 405, 0, 16)
+				TextboxTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				TextboxTxt.Text = Text
+				TextboxTxt.Name = "ThingName"
+				TextboxTxt.Position = UDim2.new(0, 212, 0, 16)
+
+				TextIndicatorF.BorderSizePixel = 0
+				TextIndicatorF.BackgroundColor3 = Color3.fromRGB(66, 100, 81)
+				TextIndicatorF.AnchorPoint = Vector2.new(1, 0.5)
+				TextIndicatorF.Size = UDim2.new(0, 61, 0, 20)
+				TextIndicatorF.Position = UDim2.new(0, 454, 0, 16)
+				TextIndicatorF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				TextIndicatorF.Name = "Text"
+				TextIndicatorF.BackgroundTransparency = 0.3
+
+				UICorner12.CornerRadius = UDim.new(0, 6)
+
+				UIStroke7.Color = Color3.fromRGB(92, 140, 114)
+				
+				TextIndicatorTextBox.BorderSizePixel = 0
+				TextIndicatorTextBox.TextWrapped = true
+				TextIndicatorTextBox.TextSize = 14
+				TextIndicatorTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TextIndicatorTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextIndicatorTextBox.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				TextIndicatorTextBox.AnchorPoint = Vector2.new(0.5, 0.5)
+				TextIndicatorTextBox.Size = UDim2.new(1, 0, 1, 0)
+				TextIndicatorTextBox.Position = UDim2.new(0.5, 0, 0.5, 0)
+				TextIndicatorTextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				TextIndicatorTextBox.Text = PresetText
+				TextIndicatorTextBox.BackgroundTransparency = 1
+				
+				local function updateTextboxSize()
+					local text = TextIndicatorTextBox.Text
+					
+					local measureText = text ~= "" and text or (PresetText ~= "" and PresetText or "...")
+
+					local textSize = game.TextService:GetTextSize(
+						measureText,
+						14,
+						Enum.Font.Gotham,
+						Vector2.new(math.huge, 20)
+					)
+
+					local targetWidth = textSize.X + 16
+
+					TS:Create(TextIndicatorF, TweenInfo.new(.1), {
+						Size = UDim2.new(0, targetWidth, 0, 20)
+					}):Play()
+				end
+
+				TextIndicatorTextBox.FocusLost:Connect(function(enterPressed)					
+					Callback(TextIndicatorTextBox.Text, enterPressed)
+				end)
+
+				TextIndicatorTextBox:GetPropertyChangedSignal("Text"):Connect(function()
+					updateTextboxSize()
+				end)
+
+				updateTextboxSize()
+				
+				registerItem(TextboxF, Text, SecContainer)
+			end
+			
+			function Items:NewMultiDropdown(Text:string, Table:table, Callback:() -> nil)
+				Text = Text or "New Multi Dropdown"
+				Table = Table or {}
+				Callback = Callback or function() end
+
+				local MultiDropdownF = Instance.new("Frame", SecContainer)
+				local MultiDropdownTxt = Instance.new("TextLabel", MultiDropdownF)
+				local Contents = Instance.new("Frame", MultiDropdownF)
+				local ArrowIcon2 = Instance.new("ImageLabel", Contents)
+				local SelectedF = Instance.new("Frame", Contents)
+				local Invisible5 = Instance.new("Frame", SelectedF)
+				local Invisible6 = Instance.new("Frame", SelectedF)
+				local OpenCloseBtt = Instance.new("TextButton", MultiDropdownF)
+				local Line3 = Instance.new("Frame", Contents)
+				local Container = Instance.new("Frame", Contents)
+
+				local UICorner12 = Instance.new("UICorner", Contents)
+				local UIStroke7 = Instance.new("UIStroke", Contents)
+				local UIListLayout4 = Instance.new("UIListLayout", SelectedF)
+				local UICorner14 = Instance.new("UICorner", Line3)
+				local UIListLayout5 = Instance.new("UIListLayout", Container)
+
+				local IsOpen = false
+				local Selected = {}
+				local SelectionOrder = {}
+				local OptionFrames = {}
+				local SelectedTags = {}
+
+				for k, v in pairs(Table) do
+					Selected[k] = v
+					if v then
+						table.insert(SelectionOrder, k)
+					end
+				end
+
+				local CLOSED_HEIGHT = 62
+				local CONTENTS_CLOSED = 21
+				local SELECTED_F_WIDTH = 390
+				local TAG_PADDING = 10
+				local TAG_HEIGHT = 16
+
+				MultiDropdownF.BorderSizePixel = 0
+				MultiDropdownF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				MultiDropdownF.Size = UDim2.new(0, 462, 0, CLOSED_HEIGHT)
+				MultiDropdownF.Position = UDim2.new(0.03239, 0, 0.50652, 0)
+				MultiDropdownF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				MultiDropdownF.Name = "MultiDropdown"
+				MultiDropdownF.BackgroundTransparency = 1
+				MultiDropdownF.ClipsDescendants = true
+
+				MultiDropdownTxt.TextWrapped = true
+				MultiDropdownTxt.BorderSizePixel = 0
+				MultiDropdownTxt.TextSize = 14
+				MultiDropdownTxt.TextXAlignment = Enum.TextXAlignment.Left
+				MultiDropdownTxt.TextScaled = true
+				MultiDropdownTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				MultiDropdownTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				MultiDropdownTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				MultiDropdownTxt.BackgroundTransparency = 1
+				MultiDropdownTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+				MultiDropdownTxt.Size = UDim2.new(0, 405, 0, 16)
+				MultiDropdownTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				MultiDropdownTxt.Text = Text
+				MultiDropdownTxt.Name = "ThingName"
+				MultiDropdownTxt.Position = UDim2.new(0, 212, 0, 16)
+
+				Contents.BorderSizePixel = 0
+				Contents.BackgroundColor3 = Color3.fromRGB(66, 100, 81)
+				Contents.AnchorPoint = Vector2.new(0.5, 0)
+				Contents.ClipsDescendants = true
+				Contents.Size = UDim2.new(0, 441, 0, CONTENTS_CLOSED)
+				Contents.Position = UDim2.new(0, 231, 0, 29)
+				Contents.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Contents.Name = "Contents"
+				Contents.BackgroundTransparency = 0.3
+
+				UICorner12.CornerRadius = UDim.new(0, 6)
+				UIStroke7.Color = Color3.fromRGB(92, 140, 114)
+
+				ArrowIcon2.BorderSizePixel = 0
+				ArrowIcon2.ScaleType = Enum.ScaleType.Fit
+				ArrowIcon2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ArrowIcon2.AnchorPoint = Vector2.new(0.5, 0.5)
+				ArrowIcon2.Image = "http://www.roblox.com/asset/?id=6034818379"
+				ArrowIcon2.Size = UDim2.new(0, 20, 0, 20)
+				ArrowIcon2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				ArrowIcon2.BackgroundTransparency = 1
+				ArrowIcon2.Name = "Arrow"
+				ArrowIcon2.Position = UDim2.new(0, 428, 0, 10)
+				ArrowIcon2.Rotation = 180
+				ArrowIcon2.ZIndex = 3
+
+				SelectedF.BorderSizePixel = 0
+				SelectedF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SelectedF.Size = UDim2.new(0, SELECTED_F_WIDTH, 0, 20)
+				SelectedF.Position = UDim2.new(0, 8, 0, 0)
+				SelectedF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				SelectedF.Name = "Selected"
+				SelectedF.BackgroundTransparency = 1
+				SelectedF.ZIndex = 2
+
+				UIListLayout4.Padding = UDim.new(0, 3)
+				UIListLayout4.VerticalAlignment = Enum.VerticalAlignment.Center
+				UIListLayout4.SortOrder = Enum.SortOrder.LayoutOrder
+				UIListLayout4.FillDirection = Enum.FillDirection.Horizontal
+
+				Invisible5.BorderSizePixel = 0
+				Invisible5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Invisible5.Size = UDim2.new(0, 0, 1, 0)
+				Invisible5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Invisible5.Name = "Invisible"
+				Invisible5.LayoutOrder = 999999999
+				Invisible5.BackgroundTransparency = 1
+
+				Invisible6.BorderSizePixel = 0
+				Invisible6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Invisible6.Size = UDim2.new(0, 0, 1, 0)
+				Invisible6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Invisible6.Name = "Invisible"
+				Invisible6.LayoutOrder = -999999999
+				Invisible6.BackgroundTransparency = 1
+
+				OpenCloseBtt.BorderSizePixel = 0
+				OpenCloseBtt.TextTransparency = 1
+				OpenCloseBtt.TextSize = 1
+				OpenCloseBtt.TextColor3 = Color3.fromRGB(0, 0, 0)
+				OpenCloseBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				OpenCloseBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				OpenCloseBtt.AnchorPoint = Vector2.new(0.5, 0.5)
+				OpenCloseBtt.BackgroundTransparency = 1
+				OpenCloseBtt.Size = UDim2.new(0, 440, 0, 25)
+				OpenCloseBtt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				OpenCloseBtt.Text = ""
+				OpenCloseBtt.Name = "Btt"
+				OpenCloseBtt.Position = UDim2.new(0, 231, 0, 43)
+				OpenCloseBtt.ZIndex = 3
+
+				Line3.BorderSizePixel = 0
+				Line3.BackgroundColor3 = Color3.fromRGB(109, 166, 134)
+				Line3.Size = UDim2.new(0.00454, 0, 0.80543, 0)
+				Line3.Position = UDim2.new(0, 13, 0, 31)
+				Line3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Line3.Name = "Line"
+				Line3.Visible = false
+
+				UICorner14.CornerRadius = UDim.new(1, 0)
+
+				Container.BorderSizePixel = 0
+				Container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Container.Size = UDim2.new(0, 405, 0, 0)
+				Container.Position = UDim2.new(0, 21, 0, 31)
+				Container.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Container.Name = "Container"
+				Container.BackgroundTransparency = 1
+
+				UIListLayout5.Padding = UDim.new(0, 5)
+				UIListLayout5.SortOrder = Enum.SortOrder.LayoutOrder
+
+				local function getTruncatedText(name, availableWidth)
+					local textSize = game.TextService:GetTextSize(name, 10, Enum.Font.Gotham, Vector2.new(math.huge, 10))
+					if textSize.X + TAG_PADDING <= availableWidth then
+						return name
+					end
+					local truncated = name
+					while #truncated > 1 do
+						truncated = string.sub(truncated, 1, #truncated - 1)
+						local ts = game.TextService:GetTextSize(truncated .. "...", 10, Enum.Font.Gotham, Vector2.new(math.huge, 10))
+						if ts.X + TAG_PADDING <= availableWidth then
+							return truncated .. "..."
+						end
+					end
+					return "..."
+				end
+
+				local function refreshSelectedTags()
+					for k, tagF in pairs(SelectedTags) do
+						tagF:Destroy()
+					end
+					SelectedTags = {}
+
+					local TAG_SPACING = 3
+					local CIRCLE_AREA = 12
+					local TAG_PAD_RIGHT = 4
+
+					local usedWidth = 0
+
+					for i, name in ipairs(SelectionOrder) do
+						if not Selected[name] then continue end
+
+						local availableWidth = SELECTED_F_WIDTH - usedWidth
+
+						local fullTextW = game.TextService:GetTextSize(
+							name, 10, Enum.Font.GothamBold, Vector2.new(math.huge, TAG_HEIGHT)
+						).X
+						local fullTagW = CIRCLE_AREA + fullTextW + TAG_PAD_RIGHT
+
+						local displayName = name
+						local textW = fullTextW
+						local tagWidth = fullTagW
+
+						if tagWidth > availableWidth then
+							local spaceForText = availableWidth - CIRCLE_AREA - TAG_PAD_RIGHT
+							local dotW = game.TextService:GetTextSize(
+								"...", 10, Enum.Font.GothamBold, Vector2.new(math.huge, TAG_HEIGHT)
+							).X
+
+							if spaceForText < dotW then break end
+
+							local truncated = name
+							while #truncated > 1 do
+								truncated = string.sub(truncated, 1, #truncated - 1)
+								local tw = game.TextService:GetTextSize(
+									truncated .. "...", 10, Enum.Font.GothamBold, Vector2.new(math.huge, TAG_HEIGHT)
+								).X
+								if tw <= spaceForText then
+									displayName = truncated .. "..."
+									textW = tw
+									tagWidth = CIRCLE_AREA + textW + TAG_PAD_RIGHT
+									break
+								end
+							end
+						end
+
+						local tagF = Instance.new("Frame", SelectedF)
+						local tagCircle = Instance.new("Frame", tagF)
+						local UICornerTag = Instance.new("UICorner", tagCircle)
+						local tagTxt = Instance.new("TextLabel", tagF)
+
+						tagF.BorderSizePixel = 0
+						tagF.BackgroundTransparency = 1
+						tagF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						tagF.Size = UDim2.new(0, tagWidth, 0, TAG_HEIGHT)
+						tagF.LayoutOrder = i
+						tagF.Name = "Tag_" .. name
+
+						tagCircle.BorderSizePixel = 0
+						tagCircle.BackgroundColor3 = Color3.fromRGB(168, 255, 208)
+						tagCircle.AnchorPoint = Vector2.new(0, 0.5)
+						tagCircle.Size = UDim2.new(0, 4, 0, 4)
+						tagCircle.Position = UDim2.new(0, 4, 0.5, 0)
+						tagCircle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+						tagCircle.Name = "Circle"
+						UICornerTag.CornerRadius = UDim.new(1, 0)
+
+						tagTxt.TextWrapped = false
+						tagTxt.BorderSizePixel = 0
+						tagTxt.TextSize = 10
+						tagTxt.TextXAlignment = Enum.TextXAlignment.Left
+						tagTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						tagTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+						tagTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+						tagTxt.BackgroundTransparency = 1
+						tagTxt.AnchorPoint = Vector2.new(0, 0.5)
+						tagTxt.Size = UDim2.new(0, textW, 0, TAG_HEIGHT)
+						tagTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+						tagTxt.Text = displayName
+						tagTxt.Name = "ThingName"
+						tagTxt.Position = UDim2.new(0, CIRCLE_AREA, 0.5, 0)
+
+						SelectedTags[name] = tagF
+
+						usedWidth = usedWidth + tagWidth + TAG_SPACING
+
+						if displayName ~= name then break end
+					end
+				end
+				
+				local function updateSizes(isOpenNow)
+					task.defer(function()
+						local containerContentH = UIListLayout5.AbsoluteContentSize.Y
+
+						if isOpenNow then
+							local openContentsH = 21 + containerContentH + 21
+							local openDropH = 29 + openContentsH + 8
+
+							local currentDropH = MultiDropdownF.AbsoluteSize.Y
+							local sectionGrowth = openDropH - currentDropH
+							local newSectionH = SectionF.AbsoluteSize.Y + sectionGrowth
+
+							TS:Create(Contents, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 441, 0, openContentsH)
+							}):Play()
+							TS:Create(MultiDropdownF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 462, 0, openDropH)
+							}):Play()
+							TS:Create(SectionF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 494, 0, newSectionH)
+							}):Play()
+
+							Line3.Visible = true
+							Line3.Size = UDim2.new(0.00454, 0, 0, containerContentH)
+						else
+							local currentDropH = MultiDropdownF.AbsoluteSize.Y
+							local sectionShrink = currentDropH - CLOSED_HEIGHT
+							local newSectionH = SectionF.AbsoluteSize.Y - sectionShrink
+
+							TS:Create(Contents, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 441, 0, CONTENTS_CLOSED)
+							}):Play()
+							TS:Create(MultiDropdownF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 462, 0, CLOSED_HEIGHT)
+							}):Play()
+							TS:Create(SectionF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 494, 0, newSectionH)
+							}):Play()
+
+							Line3.Visible = false
+						end
+					end)
+				end
+				
+				local optionOrder = {}
+				for k in pairs(Table) do
+					table.insert(optionOrder, k)
+				end
+				table.sort(optionOrder)
+
+				for idx, optName in ipairs(optionOrder) do
+					local optionF = Instance.new("Frame", Container)
+					local optCircle = Instance.new("Frame", optionF)
+					local UICorner15 = Instance.new("UICorner", optCircle)
+					local optTxt = Instance.new("TextLabel", optionF)
+					local optBtt = Instance.new("TextButton", optionF)
+
+					local isSelected = Selected[optName] == true
+					local tW = game.TextService:GetTextSize(optName, 11, Enum.Font.Gotham, Vector2.new(math.huge, 11)).X
+					local optW = tW + 20
+
+					optionF.BorderSizePixel = 0
+					optionF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					optionF.Size = UDim2.new(0, optW, 0, 18)
+					optionF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					optionF.BackgroundTransparency = 1
+					optionF.LayoutOrder = idx
+					optionF.Name = "Option_" .. optName
+
+					optCircle.BorderSizePixel = 0
+					optCircle.BackgroundColor3 = isSelected and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(92, 140, 114)
+					optCircle.AnchorPoint = Vector2.new(0.5, 0.5)
+					optCircle.Size = UDim2.new(0, 4, 0, 4)
+					optCircle.Position = UDim2.new(0, 5, 0.5, 0)
+					optCircle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					optCircle.Name = "Circle"
+
+					UICorner15.CornerRadius = UDim.new(1, 0)
+
+					optTxt.TextWrapped = false
+					optTxt.BorderSizePixel = 0
+					optTxt.TextSize = 11
+					optTxt.TextXAlignment = Enum.TextXAlignment.Left
+					optTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					optTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+					optTxt.TextColor3 = isSelected and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(150, 150, 150)
+					optTxt.BackgroundTransparency = 1
+					optTxt.AnchorPoint = Vector2.new(0, 0.5)
+					optTxt.Size = UDim2.new(0, tW, 0, 11)
+					optTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					optTxt.Text = optName
+					optTxt.Name = "ThingName"
+					optTxt.Position = UDim2.new(0, 13, 0.5, 0)
+
+					optBtt.BorderSizePixel = 0
+					optBtt.TextTransparency = 1
+					optBtt.TextSize = 1
+					optBtt.TextColor3 = Color3.fromRGB(0, 0, 0)
+					optBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					optBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+					optBtt.AnchorPoint = Vector2.new(0.5, 0.5)
+					optBtt.BackgroundTransparency = 1
+					optBtt.Size = UDim2.new(1, 0, 1, 0)
+					optBtt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					optBtt.Text = ""
+					optBtt.Name = "Btt"
+					optBtt.Position = UDim2.new(0.5, 0, 0.5, 0)
+					optBtt.ZIndex = 4
+
+					OptionFrames[optName] = { frame = optionF, circle = optCircle, txt = optTxt }
+
+					optBtt.MouseButton1Click:Connect(function()
+						Selected[optName] = not Selected[optName]
+						local sel = Selected[optName]
+
+						if sel then
+							table.insert(SelectionOrder, optName)
+						else
+							for i, v in ipairs(SelectionOrder) do
+								if v == optName then
+									table.remove(SelectionOrder, i)
+									break
+								end
+							end
+						end
+
+						TS:Create(optCircle, TweenInfo.new(.15), {
+							BackgroundColor3 = sel and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(92, 140, 114)
+						}):Play()
+						TS:Create(optTxt, TweenInfo.new(.15), {
+							TextColor3 = sel and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(150, 150, 150)
+						}):Play()
+
+						refreshSelectedTags()
+
+						if IsOpen then
+							updateSizes(true)
+						end
+
+						task.spawn(function() Callback(optName, sel) end)
+					end)
+				end
+
+				OpenCloseBtt.MouseButton1Click:Connect(function()
+					IsOpen = not IsOpen
+
+					TS:Create(ArrowIcon2, TweenInfo.new(.2), {
+						Rotation = IsOpen and 0 or 180
+					}):Play()
+
+					updateSizes(IsOpen)
+				end)
+
+				task.defer(function()
+					Container.Size = UDim2.new(0, 405, 0, UIListLayout5.AbsoluteContentSize.Y)
+					refreshSelectedTags()
+				end)
+
+				registerItem(MultiDropdownF, Text, SecContainer)
+			end
+			
+			function Items:NewSingleDropdown(Text:string, Table:table, CloseAfterClick:boolean, Callback:() -> nil)
+				Text = Text or "New Single Dropdown"
+				Table = Table or {}
+				CloseAfterClick = CloseAfterClick ~= nil and CloseAfterClick or false
+				Callback = Callback or function() end
+
+				local SingleDropdownF = Instance.new("Frame", SecContainer)
+				local SingleDropdownTxt = Instance.new("TextLabel", SingleDropdownF)
+				local ContentsF = Instance.new("Frame", SingleDropdownF)
+				local ArrowIcon2 = Instance.new("ImageLabel", ContentsF)
+				local SelectedFrame = Instance.new("Frame", ContentsF)
+				local OpenCloseBtt = Instance.new("TextButton", SingleDropdownF)
+				local Line3 = Instance.new("Frame", ContentsF)
+				local ContainerF = Instance.new("Frame", ContentsF)
+
+				local UICorner12 = Instance.new("UICorner", ContentsF)
+				local UIStroke7 = Instance.new("UIStroke", ContentsF)
+				local UICorner13 = Instance.new("UICorner", Line3)
+				local UIListLayout5 = Instance.new("UIListLayout", ContainerF)
+
+				local SelectedTxt = Instance.new("TextLabel", SelectedFrame)
+
+				local IsOpen = false
+				local CurrentSelected = nil
+
+				local CLOSED_HEIGHT = 62
+				local CONTENTS_CLOSED = 21
+				local SELECTED_F_WIDTH = 390
+				
+				local isArray = (#Table > 0)
+				if isArray then
+					local converted = {}
+					for _, v in ipairs(Table) do
+						local name
+						if typeof(v) == "Instance" then
+							name = v.Name
+						else
+							name = tostring(v)
+						end
+						if converted[name] then
+							local i = 2
+							while converted[name .. i] do i += 1 end
+							name = name .. i
+						end
+						converted[name] = v
+					end
+					Table = converted
+				end
+				
+				SingleDropdownF.BorderSizePixel = 0
+				SingleDropdownF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SingleDropdownF.Size = UDim2.new(0, 462, 0, CLOSED_HEIGHT)
+				SingleDropdownF.Position = UDim2.new(0.03239, 0, 0.50652, 0)
+				SingleDropdownF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				SingleDropdownF.Name = "SingleDropdown"
+				SingleDropdownF.BackgroundTransparency = 1
+				SingleDropdownF.ClipsDescendants = true
+
+				SingleDropdownTxt.TextWrapped = true
+				SingleDropdownTxt.BorderSizePixel = 0
+				SingleDropdownTxt.TextSize = 14
+				SingleDropdownTxt.TextXAlignment = Enum.TextXAlignment.Left
+				SingleDropdownTxt.TextScaled = true
+				SingleDropdownTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SingleDropdownTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				SingleDropdownTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+				SingleDropdownTxt.BackgroundTransparency = 1
+				SingleDropdownTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+				SingleDropdownTxt.Size = UDim2.new(0, 405, 0, 16)
+				SingleDropdownTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				SingleDropdownTxt.Text = Text
+				SingleDropdownTxt.Name = "ThingName"
+				SingleDropdownTxt.Position = UDim2.new(0, 212, 0, 16)
+
+				ContentsF.BorderSizePixel = 0
+				ContentsF.BackgroundColor3 = Color3.fromRGB(66, 100, 81)
+				ContentsF.AnchorPoint = Vector2.new(0.5, 0)
+				ContentsF.ClipsDescendants = true
+				ContentsF.Size = UDim2.new(0, 441, 0, CONTENTS_CLOSED)
+				ContentsF.Position = UDim2.new(0, 231, 0, 29)
+				ContentsF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				ContentsF.Name = "Contents"
+				ContentsF.BackgroundTransparency = 0.3
+
+				UICorner12.CornerRadius = UDim.new(0, 6)
+				UIStroke7.Color = Color3.fromRGB(92, 140, 114)
+
+				ArrowIcon2.BorderSizePixel = 0
+				ArrowIcon2.ScaleType = Enum.ScaleType.Fit
+				ArrowIcon2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ArrowIcon2.AnchorPoint = Vector2.new(0.5, 0.5)
+				ArrowIcon2.Image = "http://www.roblox.com/asset/?id=6034818379"
+				ArrowIcon2.Size = UDim2.new(0, 20, 0, 20)
+				ArrowIcon2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				ArrowIcon2.BackgroundTransparency = 1
+				ArrowIcon2.Name = "Arrow"
+				ArrowIcon2.Position = UDim2.new(0, 428, 0, 10)
+				ArrowIcon2.Rotation = 180
+				ArrowIcon2.ZIndex = 3
+
+				SelectedFrame.BorderSizePixel = 0
+				SelectedFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SelectedFrame.Size = UDim2.new(0, SELECTED_F_WIDTH, 0, 20)
+				SelectedFrame.Position = UDim2.new(0, 8, 0, 0)
+				SelectedFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				SelectedFrame.Name = "Selected"
+				SelectedFrame.BackgroundTransparency = 1
+				SelectedFrame.ClipsDescendants = true
+				SelectedFrame.ZIndex = 2
+
+				SelectedTxt.TextWrapped = false
+				SelectedTxt.BorderSizePixel = 0
+				SelectedTxt.TextSize = 10
+				SelectedTxt.TextXAlignment = Enum.TextXAlignment.Left
+				SelectedTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SelectedTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+				SelectedTxt.TextColor3 = Color3.fromRGB(150, 150, 150)  -- cinza = nada selecionado
+				SelectedTxt.BackgroundTransparency = 1
+				SelectedTxt.AnchorPoint = Vector2.new(0, 0.5)
+				SelectedTxt.Size = UDim2.new(1, 0, 1, 0)
+				SelectedTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				SelectedTxt.Text = "None"
+				SelectedTxt.Name = "SelectedTxt"
+				SelectedTxt.Position = UDim2.new(0, 0, 0.5, 0)
+				SelectedTxt.ZIndex = 2
+
+				OpenCloseBtt.BorderSizePixel = 0
+				OpenCloseBtt.TextTransparency = 1
+				OpenCloseBtt.TextSize = 1
+				OpenCloseBtt.TextColor3 = Color3.fromRGB(0, 0, 0)
+				OpenCloseBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				OpenCloseBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+				OpenCloseBtt.AnchorPoint = Vector2.new(0.5, 0.5)
+				OpenCloseBtt.BackgroundTransparency = 1
+				OpenCloseBtt.Size = UDim2.new(0, 440, 0, 25)
+				OpenCloseBtt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				OpenCloseBtt.Text = ""
+				OpenCloseBtt.Name = "Btt"
+				OpenCloseBtt.Position = UDim2.new(0, 231, 0, 43)
+				OpenCloseBtt.ZIndex = 3
+
+				Line3.BorderSizePixel = 0
+				Line3.BackgroundColor3 = Color3.fromRGB(109, 166, 134)
+				Line3.Size = UDim2.new(0.00454, 0, 0.80543, 0)
+				Line3.Position = UDim2.new(0, 13, 0, 31)
+				Line3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Line3.Name = "Line"
+				Line3.Visible = false
+
+				UICorner13.CornerRadius = UDim.new(1, 0)
+
+				ContainerF.BorderSizePixel = 0
+				ContainerF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ContainerF.Size = UDim2.new(0, 405, 0, 0)
+				ContainerF.Position = UDim2.new(0, 21, 0, 31)
+				ContainerF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				ContainerF.Name = "Container"
+				ContainerF.BackgroundTransparency = 1
+
+				UIListLayout5.Padding = UDim.new(0, 5)
+				UIListLayout5.SortOrder = Enum.SortOrder.LayoutOrder
+
+				local function refreshSelected()
+					if CurrentSelected then
+						SelectedTxt.Text = CurrentSelected
+						SelectedTxt.TextColor3 = Color3.fromRGB(168, 255, 208)
+					else
+						SelectedTxt.Text = "None"
+						SelectedTxt.TextColor3 = Color3.fromRGB(150, 150, 150)
+					end
+				end
+
+				local function updateSizes(isOpenNow)
+					task.defer(function()
+						local containerContentH = UIListLayout5.AbsoluteContentSize.Y
+
+						if isOpenNow then
+							local openContentsH = 21 + containerContentH + 21
+							local openDropH = 29 + openContentsH + 8
+
+							local currentDropH = SingleDropdownF.AbsoluteSize.Y
+							local sectionGrowth = openDropH - currentDropH
+							local newSectionH = SectionF.AbsoluteSize.Y + sectionGrowth
+
+							TS:Create(ContentsF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 441, 0, openContentsH)
+							}):Play()
+							TS:Create(SingleDropdownF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 462, 0, openDropH)
+							}):Play()
+							TS:Create(SectionF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 494, 0, newSectionH)
+							}):Play()
+
+							Line3.Visible = true
+							Line3.Size = UDim2.new(0.00454, 0, 0, containerContentH)
+						else
+							local currentDropH = SingleDropdownF.AbsoluteSize.Y
+							local sectionShrink = currentDropH - CLOSED_HEIGHT
+							local newSectionH = SectionF.AbsoluteSize.Y - sectionShrink
+
+							TS:Create(ContentsF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 441, 0, CONTENTS_CLOSED)
+							}):Play()
+							TS:Create(SingleDropdownF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 462, 0, CLOSED_HEIGHT)
+							}):Play()
+							TS:Create(SectionF, TweenInfo.new(.2), {
+								Size = UDim2.new(0, 494, 0, newSectionH)
+							}):Play()
+
+							Line3.Visible = false
+						end
+					end)
+				end
+
+				local OptionFrames = {}
+				local optionOrder = {}
+				for k in pairs(Table) do
+					table.insert(optionOrder, k)
+				end
+				table.sort(optionOrder)
+
+				local function setSelected(optName)
+					-- reseta visual de todas as opções
+					for name, frames in pairs(OptionFrames) do
+						local isSel = (name == optName)
+						TS:Create(frames.circle, TweenInfo.new(.15), {
+							BackgroundColor3 = isSel and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(92, 140, 114)
+						}):Play()
+						TS:Create(frames.txt, TweenInfo.new(.15), {
+							TextColor3 = isSel and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(150, 150, 150)
+						}):Play()
+					end
+
+					CurrentSelected = optName
+					refreshSelected()
+				end
+
+				for idx, optName in ipairs(optionOrder) do
+					local optVal = Table[optName]
+
+					local optionF = Instance.new("Frame", ContainerF)
+					local optCircle = Instance.new("Frame", optionF)
+					local UICorner15 = Instance.new("UICorner", optCircle)
+					local optTxt = Instance.new("TextLabel", optionF)
+					local optBtt = Instance.new("TextButton", optionF)
+
+					local tW = game.TextService:GetTextSize(optName, 11, Enum.Font.GothamBold, Vector2.new(math.huge, 11)).X
+					local optW = tW + 20
+
+					optionF.BorderSizePixel = 0
+					optionF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					optionF.Size = UDim2.new(0, optW, 0, 18)
+					optionF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					optionF.BackgroundTransparency = 1
+					optionF.LayoutOrder = idx
+					optionF.Name = "Option_" .. optName
+
+					optCircle.BorderSizePixel = 0
+					optCircle.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+					optCircle.AnchorPoint = Vector2.new(0.5, 0.5)
+					optCircle.Size = UDim2.new(0, 4, 0, 4)
+					optCircle.Position = UDim2.new(0, 5, 0.5, 0)
+					optCircle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					optCircle.Name = "Circle"
+
+					UICorner15.CornerRadius = UDim.new(1, 0)
+
+					optTxt.TextWrapped = false
+					optTxt.BorderSizePixel = 0
+					optTxt.TextSize = 11
+					optTxt.TextXAlignment = Enum.TextXAlignment.Left
+					optTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					optTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+					optTxt.TextColor3 = Color3.fromRGB(150, 150, 150)
+					optTxt.BackgroundTransparency = 1
+					optTxt.AnchorPoint = Vector2.new(0, 0.5)
+					optTxt.Size = UDim2.new(0, tW, 0, 11)
+					optTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					optTxt.Text = optName
+					optTxt.Name = "ThingName"
+					optTxt.Position = UDim2.new(0, 13, 0.5, 0)
+
+					optBtt.BorderSizePixel = 0
+					optBtt.TextTransparency = 1
+					optBtt.TextSize = 1
+					optBtt.TextColor3 = Color3.fromRGB(0, 0, 0)
+					optBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					optBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+					optBtt.AnchorPoint = Vector2.new(0.5, 0.5)
+					optBtt.BackgroundTransparency = 1
+					optBtt.Size = UDim2.new(1, 0, 1, 0)
+					optBtt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					optBtt.Text = ""
+					optBtt.Name = "Btt"
+					optBtt.Position = UDim2.new(0.5, 0, 0.5, 0)
+					optBtt.ZIndex = 4
+
+					OptionFrames[optName] = { frame = optionF, circle = optCircle, txt = optTxt }
+
+					optBtt.MouseButton1Click:Connect(function()
+						if CurrentSelected == optName then
+							setSelected(nil)
+							task.spawn(function() Callback(nil, nil) end)
+						else
+							setSelected(optName)
+							task.spawn(function() Callback(optName, optVal) end)
+						end
+
+						if CloseAfterClick then
+							IsOpen = false
+							TS:Create(ArrowIcon2, TweenInfo.new(.2), {
+								Rotation = 180
+							}):Play()
+							updateSizes(false)
+						end
+					end)
+				end
+
+				OpenCloseBtt.MouseButton1Click:Connect(function()
+					IsOpen = not IsOpen
+
+					TS:Create(ArrowIcon2, TweenInfo.new(.2), {
+						Rotation = IsOpen and 0 or 180
+					}):Play()
+
+					updateSizes(IsOpen)
+				end)
+
+				task.defer(function()
+					ContainerF.Size = UDim2.new(0, 405, 0, UIListLayout5.AbsoluteContentSize.Y)
+					refreshSelected()
+				end)
+
+				registerItem(SingleDropdownF, Text, SecContainer)
+			end
+			
+			return Items
+		end
+		
+		return Section
+		
+	end
+	
+	return Tabs
+end
+
+return Lib
