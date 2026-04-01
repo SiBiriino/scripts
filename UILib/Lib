@@ -2590,7 +2590,7 @@ function Lib:NewUI()
 					for _, v in ipairs(Table) do
 						local name
 						if typeof(v) == "Instance" then
-							name = v.Name
+							name = v
 						else
 							name = tostring(v)
 						end
