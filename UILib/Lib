@@ -75,6 +75,7 @@ function Lib:NewUI()
 	
 	ScreenGui.IgnoreGuiInset = true
 	ScreenGui.ResetOnSpawn = false
+	ScreenGui.Enabled = false
 	ScreenGui.Name = "SiBin"
 	
 	MainF.BorderSizePixel = 0
@@ -390,6 +391,7 @@ function Lib:NewUI()
 	
 	local AllItems = {}
 	local AllSections = {}
+	local AllCleanups = {}
 
 	local isSearching = false
 
@@ -527,6 +529,272 @@ function Lib:NewUI()
 	
 	MinimizeBtt.MouseButton1Click:Connect(function()
 		ScreenGui.Enabled = false
+	end)
+	
+	local function ShowWarning()
+		local WarningBG = Instance.new("Frame", UI)
+		local WarningUI = Instance.new("Frame", WarningBG)
+		local TopF6 = Instance.new("Frame", WarningUI)
+		local Line8 = Instance.new("Frame", TopF6)
+		local NotifTitleTxt = Instance.new("TextLabel", TopF6)
+		local WarnIcon = Instance.new("ImageLabel", TopF6)
+		local Content1TxT = Instance.new("TextLabel", WarningUI)
+		local Omniman = Instance.new("TextLabel", WarningUI)
+		local Opt1YesF = Instance.new("Frame", WarningUI)
+		local YesTxt = Instance.new("TextLabel", Opt1YesF)
+		local NoFrame = Instance.new("Frame", WarningUI)
+		local NoTxt = Instance.new("TextLabel", NoFrame)
+		
+		local ConfirmationBtt = Instance.new("TextButton", Opt1YesF)
+		local NoBtt = Instance.new("TextButton", NoFrame)
+		
+		local UICorner18 = Instance.new("UICorner", WarningBG)
+		local UICorner19 = Instance.new("UICorner", WarningUI)
+		local UIGrad6 = Instance.new("UIGradient", WarningUI)
+		local UIGrad7 = Instance.new("UIGradient", Opt1YesF)
+		local UICorner20 = Instance.new("UICorner", Opt1YesF)
+		local UIStroke20 = Instance.new("UIStroke", Opt1YesF)
+		local UIGrad21 = Instance.new("UIGradient", NoFrame)
+		local UICorner21 = Instance.new("UICorner", NoFrame)
+		local UIStroke21 = Instance.new("UIStroke", NoFrame)
+		
+		WarningBG.ZIndex = 2
+		WarningBG.BorderSizePixel = 0
+		WarningBG.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+		WarningBG.AnchorPoint = Vector2.new(0.5, 0.5)
+		WarningBG.Size = UDim2.new(1, 0, 1, 0)
+		WarningBG.Position = UDim2.new(0.5, 0, 0.5, 0)
+		WarningBG.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		WarningBG.Name = "Warning"
+		WarningBG.BackgroundTransparency = 1
+
+		WarningUI.BorderSizePixel = 0
+		WarningUI.BackgroundColor3 = Color3.fromRGB(53, 81, 66)
+		WarningUI.AnchorPoint = Vector2.new(0.5, 0.5)
+		WarningUI.Size = UDim2.new(0,0,0,0)
+		WarningUI.Position = UDim2.new(0.49915, 0, 0.49863, 0)
+		WarningUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		WarningUI.Name = "Warn"
+		WarningUI.ZIndex = 3
+
+		UICorner18.CornerRadius = UDim.new(0, 6)
+		UICorner19.CornerRadius = UDim.new(0, 6)
+
+		UIGrad6.Rotation = 45
+		UIGrad6.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(0.509, Color3.fromRGB(158, 158, 158)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))}
+
+		TopF6.BorderSizePixel = 0
+		TopF6.BackgroundColor3 = Color3.fromRGB(53, 81, 66)
+		TopF6.Size = UDim2.new(0.99699, 0, 0.21845, 0)
+		TopF6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TopF6.Name = "Top"
+		TopF6.BackgroundTransparency = 1
+		TopF6.ZIndex = 3
+
+		Line8.BorderSizePixel = 0
+		Line8.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+		Line8.Size = UDim2.new(1, 0, 0.02222, 0)
+		Line8.Position = UDim2.new(0, 0, 1, 0)
+		Line8.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Line8.Name = "Line"
+		Line8.ZIndex = 3
+
+		NotifTitleTxt.TextWrapped = true
+		NotifTitleTxt.BorderSizePixel = 0
+		NotifTitleTxt.TextSize = 14
+		NotifTitleTxt.TextScaled = true
+		NotifTitleTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		NotifTitleTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+		NotifTitleTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+		NotifTitleTxt.BackgroundTransparency = 1
+		NotifTitleTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+		NotifTitleTxt.Size = UDim2.new(0.23867, 0, 0.35556, 0)
+		NotifTitleTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		NotifTitleTxt.Text = "WARNING"
+		NotifTitleTxt.Name = "NotificationTitle"
+		NotifTitleTxt.Position = UDim2.new(0.49849, 0, 0.46667, 0)
+		NotifTitleTxt.ZIndex = 3
+
+		WarnIcon.BorderSizePixel = 0
+		WarnIcon.Image = "http://www.roblox.com/asset/?id=6031071053"
+		WarnIcon.Size = UDim2.new(0.05136, 0, 0.37778, 0)
+		WarnIcon.BackgroundTransparency = 1
+		WarnIcon.Position = UDim2.new(0.30514, 0, 0.28889, 0)
+		WarnIcon.ZIndex = 3
+
+		Content1TxT.TextWrapped = true
+		Content1TxT.BorderSizePixel = 0
+		Content1TxT.TextSize = 14
+		Content1TxT.TextScaled = true
+		Content1TxT.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Content1TxT.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+		Content1TxT.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Content1TxT.BackgroundTransparency = 1
+		Content1TxT.AnchorPoint = Vector2.new(0.5, 0.5)
+		Content1TxT.Size = UDim2.new(0.8253, 0, 0.28155, 0)
+		Content1TxT.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Content1TxT.Text = "Clicking YES will close this UI and unload all scripts"
+		Content1TxT.Name = "Text1"
+		Content1TxT.Position = UDim2.new(0.5, 0, 0.40777, 0)
+		Content1TxT.ZIndex = 3
+
+		Omniman.TextWrapped = true
+		Omniman.BorderSizePixel = 0
+		Omniman.TextSize = 14
+		Omniman.TextScaled = true
+		Omniman.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Omniman.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+		Omniman.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Omniman.BackgroundTransparency = 1
+		Omniman.AnchorPoint = Vector2.new(0.5, 0.5)
+		Omniman.Size = UDim2.new(0.38253, 0, 0.09223, 0)
+		Omniman.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Omniman.Text = "Are you sure?"
+		Omniman.Name = "Text2"
+		Omniman.Position = UDim2.new(0.48796, 0, 0.64081, 0)
+		Omniman.ZIndex = 3
+
+		Opt1YesF.BorderSizePixel = 0
+		Opt1YesF.BackgroundColor3 = Color3.fromRGB(53, 81, 66)
+		Opt1YesF.AnchorPoint = Vector2.new(0.5, 0.5)
+		Opt1YesF.Size = UDim2.new(0.31024, 0, 0.14078, 0)
+		Opt1YesF.Position = UDim2.new(0.31325, 0, 0.83495, 0)
+		Opt1YesF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Opt1YesF.Name = "Yes"
+		Opt1YesF.BackgroundTransparency = 0.1
+		Opt1YesF.ZIndex = 3
+		
+		UIGrad7.Rotation = 45
+		UIGrad7.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(0.509, Color3.fromRGB(158, 158, 158)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))}
+
+		UICorner20.CornerRadius = UDim.new(0, 6)
+
+		UIStroke20.Color = Color3.fromRGB(92, 140, 114)
+
+		YesTxt.TextWrapped = true
+		YesTxt.BorderSizePixel = 0
+		YesTxt.TextSize = 14
+		YesTxt.TextScaled = true
+		YesTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		YesTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+		YesTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+		YesTxt.BackgroundTransparency = 1
+		YesTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+		YesTxt.Size = UDim2.new(1.03883, 0, 1.03448, 0)
+		YesTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		YesTxt.Text = "Yes"
+		YesTxt.Name = "TabName"
+		YesTxt.Position = UDim2.new(0.48544, 0, 0.48276, 0)
+		YesTxt.ZIndex = 3
+
+		ConfirmationBtt.BorderSizePixel = 0
+		ConfirmationBtt.TextTransparency = 1
+		ConfirmationBtt.TextSize = 1
+		ConfirmationBtt.TextColor3 = Color3.fromRGB(0, 0, 0)
+		ConfirmationBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ConfirmationBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+		ConfirmationBtt.AnchorPoint = Vector2.new(0.5, 0.5)
+		ConfirmationBtt.BackgroundTransparency = 1
+		ConfirmationBtt.Size = UDim2.new(1, 0, 1, 0)
+		ConfirmationBtt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		ConfirmationBtt.Text = ""
+		ConfirmationBtt.Name = "Confirmation"
+		ConfirmationBtt.Position = UDim2.new(0.5, 0, 0.5, 0)
+		ConfirmationBtt.ZIndex = 3
+
+		NoFrame.BorderSizePixel = 0
+		NoFrame.BackgroundColor3 = Color3.fromRGB(53, 81, 66)
+		NoFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+		NoFrame.Size = UDim2.new(0.31024, 0, 0.14078, 0)
+		NoFrame.Position = UDim2.new(0.68072, 0, 0.83495, 0)
+		NoFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		NoFrame.Name = "NO"
+		NoFrame.BackgroundTransparency = 0.1
+		NoFrame.ZIndex = 3
+
+		UIGrad21.Rotation = 45
+		UIGrad21.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(0.509, Color3.fromRGB(158, 158, 158)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))}
+
+		UICorner21.CornerRadius = UDim.new(0, 6)
+
+		UIStroke21.Color = Color3.fromRGB(92, 140, 114)
+
+		NoTxt.TextWrapped = true
+		NoTxt.BorderSizePixel = 0
+		NoTxt.TextSize = 14
+		NoTxt.TextScaled = true
+		NoTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		NoTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+		NoTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+		NoTxt.BackgroundTransparency = 1
+		NoTxt.AnchorPoint = Vector2.new(0.5, 0.5)
+		NoTxt.Size = UDim2.new(1.03883, 0, 1.03448, 0)
+		NoTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		NoTxt.Text = "NO!"
+		NoTxt.Name = "TabName"
+		NoTxt.Position = UDim2.new(0.48544, 0, 0.48276, 0)
+		NoTxt.ZIndex = 3
+
+		NoBtt.BorderSizePixel = 0
+		NoBtt.TextTransparency = 1
+		NoBtt.TextSize = 1
+		NoBtt.TextColor3 = Color3.fromRGB(0, 0, 0)
+		NoBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		NoBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+		NoBtt.AnchorPoint = Vector2.new(0.5, 0.5)
+		NoBtt.BackgroundTransparency = 1
+		NoBtt.Size = UDim2.new(1, 0, 1, 0)
+		NoBtt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		NoBtt.Text = ""
+		NoBtt.Name = "NoBtt"
+		NoBtt.Position = UDim2.new(0.5, 0, 0.5, 0)
+		NoBtt.ZIndex = 3
+		
+		TS:Create(WarningBG, TweenInfo.new(.2), {
+			Transparency = .5
+		}):Play()
+		
+		TS:Create(WarningUI, TweenInfo.new(.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+			Size = UDim2.new(0.566, 0, 0.564, 0)
+		}):Play()
+		
+		local YesConnection
+		local NoConnection
+		
+		YesConnection = ConfirmationBtt.MouseButton1Click:Connect(function()
+			ScreenGui.Enabled = false
+
+			for _, cleanup in pairs(AllCleanups) do
+				task.spawn(function()
+					pcall(cleanup)
+				end)
+			end
+
+			task.delay(0.15, function()
+				ScreenGui:Destroy()
+			end)
+		end)
+		
+		NoConnection = NoBtt.MouseButton1Click:Connect(function()
+			TS:Create(WarningBG, TweenInfo.new(.2), {
+				Transparency = 1
+			}):Play()
+			
+			TS:Create(WarningUI, TweenInfo.new(.2), {
+				Size = UDim2.new(0,0,0,0)
+			}):Play()
+			
+			YesConnection:Disconnect()
+			NoConnection:Disconnect()
+			
+			task.wait(.2)
+			
+			WarningBG:Destroy()
+		end)
+	end
+	
+	CloseBtt.MouseButton1Click:Connect(function()
+		ShowWarning()
 	end)
 	
 	local Tabs = {}
@@ -917,6 +1185,17 @@ function Lib:NewUI()
 			
 			local Items = {}
 			
+			function Items:NewLine()
+				local Line67 = Instance.new("Frame", SecContainer)
+				
+				Line67.Name = "Line"
+				Line67.Size = UDim2.new(0.9, 0, 0, 2)
+				Line67.BackgroundColor3 = Color3.fromRGB(91, 139, 113)
+				Line67.BorderSizePixel = 0
+				
+				registerItem(Line67, "", SecContainer)
+			end
+			
 			function Items:NewLabel(Text:string)
 				Text = Text or "New Label"
 				
@@ -1193,9 +1472,19 @@ function Lib:NewUI()
 					ChangeValue(Value)
 					
 					task.spawn(function()
-						Callback(State)
+						Callback(Value)
 					end)
 				end
+				
+				table.insert(AllCleanups, function()
+					if OnOrOff then
+						OnOrOff = false
+						ChangeValue(false)
+						task.spawn(function()
+							Callback(false)
+						end)
+					end
+				end)
 				
 				return Toggle				
 			end
@@ -1600,6 +1889,18 @@ function Lib:NewUI()
 						
 						Callback(State)
 					end
+				end)
+				
+				table.insert(AllCleanups, function()
+					if State then
+						State = false
+						TS:Create(UIStroke7, TweenInfo.new(.2), { 
+							Transparency = 1, 
+							Thickness = 1 
+						}):Play()
+						Callback(false)
+					end
+					IsKeySetting = false
 				end)
 				
 				registerItem(KeybindF, Text, SecContainer)
@@ -2720,6 +3021,31 @@ function Lib:NewUI()
 			return Items
 		end
 		
+		function Section:SetMain()
+			ActiveTab = Tab
+			
+			TS:Create(Tab, TweenInfo.new(.2), {
+				BackgroundColor3 = Color3.fromRGB(63, 97, 78),
+				BackgroundTransparency = 0.3
+			}):Play()
+
+			TS:Create(UIStroke5, TweenInfo.new(.2), {
+				Transparency = 0
+			}):Play()
+
+			TS:Create(TabNameF, TweenInfo.new(.2), {
+				Size = UDim2.new(0, 0, 0.731, 0)
+			}):Play()
+
+			TS:Create(UIStroke6, TweenInfo.new(.2), {
+				Transparency = 0
+			}):Play()
+			
+			TabContainer.Visible = true
+			
+			TabName.Text = TabNameS
+		end
+			
 		return Section
 		
 	end
@@ -2727,6 +3053,11 @@ function Lib:NewUI()
 	function Tabs:ToggleUI()
 		ScreenGui.Enabled = not ScreenGui.Enabled
 	end
+	
+	task.defer(function()
+		task.wait()
+		ScreenGui.Enabled = true
+	end)
 	
 	return Tabs
 end
