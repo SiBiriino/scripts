@@ -525,6 +525,10 @@ function Lib:NewUI()
 		}):Play()
 	end)
 	
+	MinimizeBtt.MouseButton1Click:Connect(function()
+		ScreenGui.Enabled = false
+	end)
+	
 	local Tabs = {}
 	local TabCount = 0
 	local ActiveTab
@@ -2718,6 +2722,10 @@ function Lib:NewUI()
 		
 		return Section
 		
+	end
+	
+	function Tabs:ToggleUI()
+		ScreenGui.Enabled = not ScreenGui.Enabled
 	end
 	
 	return Tabs
