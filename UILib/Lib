@@ -964,6 +964,14 @@ function Lib:NewUI()
 				IconI.Position = UDim2.new(0.5, 0, 0.5, 0)
 				
 				registerItem(LabelF, Text, SecContainer)
+				
+				local Label = {}
+				
+				function Label:SetText(Text2:string)
+					LabelTxt.Text = Text2
+				end
+				
+				return Label
 			end
 			
 			function Items:NewButton(Text:string, Callback:() -> nil)
@@ -1113,6 +1121,36 @@ function Lib:NewUI()
 				Btt.Name = "Btt"
 				Btt.Position = UDim2.new(0.5, 0, 0.5, 0)
 				
+				local function ChangeValue(Value)
+					if Value then
+						TS:Create(ToggleIndicator, TweenInfo.new(.2), {
+							BackgroundColor3 = Color3.fromRGB(136, 207, 168)
+						}):Play()
+
+						TS:Create(Ball, TweenInfo.new(.2), {
+							BackgroundColor3 = Color3.fromRGB(167, 255, 207),
+							Position = UDim2.new(0.68, 0, 0.5, 0)
+						}):Play()
+
+						TS:Create(UIStroke7, TweenInfo.new(.2), {
+							Color = Color3.fromRGB(167, 255, 207)
+						}):Play()
+					else
+						TS:Create(ToggleIndicator, TweenInfo.new(.2), {
+							BackgroundColor3 = Color3.fromRGB(66, 100, 81)
+						}):Play()
+
+						TS:Create(Ball, TweenInfo.new(.2), {
+							BackgroundColor3 = Color3.fromRGB(92, 140, 114),
+							Position = UDim2.new(0.32, 0, 0.5, 0)
+						}):Play()
+
+						TS:Create(UIStroke7, TweenInfo.new(.2), {
+							Color = Color3.fromRGB(92, 140, 114)
+						}):Play()
+					end
+				end
+				
 				if OnOrOff then
 					ToggleIndicator.BackgroundColor3 = Color3.fromRGB(136, 207, 168)
 					
@@ -1136,33 +1174,7 @@ function Lib:NewUI()
 				Btt.MouseButton1Click:Connect(function()
 					OnOrOff = not OnOrOff
 					
-					if OnOrOff then
-						TS:Create(ToggleIndicator, TweenInfo.new(.2), {
-							BackgroundColor3 = Color3.fromRGB(136, 207, 168)
-						}):Play()
-
-						TS:Create(Ball, TweenInfo.new(.2), {
-							BackgroundColor3 = Color3.fromRGB(167, 255, 207),
-							Position = UDim2.new(0.68, 0, 0.5, 0)
-						}):Play()
-
-						TS:Create(UIStroke7, TweenInfo.new(.2), {
-							Color = Color3.fromRGB(167, 255, 207)
-						}):Play()
-					else
-						TS:Create(ToggleIndicator, TweenInfo.new(.2), {
-							BackgroundColor3 = Color3.fromRGB(66, 100, 81)
-						}):Play()
-						
-						TS:Create(Ball, TweenInfo.new(.2), {
-							BackgroundColor3 = Color3.fromRGB(92, 140, 114),
-							Position = UDim2.new(0.32, 0, 0.5, 0)
-						}):Play()
-						
-						TS:Create(UIStroke7, TweenInfo.new(.2), {
-							Color = Color3.fromRGB(92, 140, 114)
-						}):Play()
-					end
+					ChangeValue(OnOrOff)
 					
 					task.spawn(function()
 						Callback(OnOrOff)
@@ -1170,6 +1182,18 @@ function Lib:NewUI()
 				end)
 				
 				registerItem(ToggleF, Text, SecContainer)
+				
+				local Toggle = {}
+				
+				function Toggle:SetValue(Value)
+					ChangeValue(Value)
+					
+					task.spawn(function()
+						Callback(State)
+					end)
+				end
+				
+				return Toggle				
 			end
 			
 			function Items:NewSlider(Text:string, Min:number, Max:number, Start:number, Callback:() -> nil)
@@ -2099,6 +2123,131 @@ function Lib:NewUI()
 				end)
 
 				registerItem(MultiDropdownF, Text, SecContainer)
+				
+				local MDropdown = {}
+				
+				function MDropdown:Refresh(Table2: table)
+					Table2 = Table2 or {}
+
+					-- Limpa estado
+					Selected = {}
+					SelectionOrder = {}
+					OptionFrames = {}
+					SelectedTags = {}
+
+					-- Destroi opções antigas
+					for _, child in ipairs(Container:GetChildren()) do
+						if child:IsA("Frame") then
+							child:Destroy()
+						end
+					end
+
+					-- Reconstrói com a nova tabela
+					for k, v in pairs(Table2) do
+						Selected[k] = v
+						if v then
+							table.insert(SelectionOrder, k)
+						end
+					end
+
+					local newOrder = {}
+					for k in pairs(Table2) do
+						table.insert(newOrder, k)
+					end
+					table.sort(newOrder)
+
+					for idx, optName in ipairs(newOrder) do
+						local optionF = Instance.new("Frame", Container)
+						local optCircle = Instance.new("Frame", optionF)
+						local UICorner15 = Instance.new("UICorner", optCircle)
+						local optTxt = Instance.new("TextLabel", optionF)
+						local optBtt = Instance.new("TextButton", optionF)
+
+						local isSelected = Selected[optName] == true
+						local tW = game.TextService:GetTextSize(optName, 11, Enum.Font.Gotham, Vector2.new(math.huge, 11)).X
+						local optW = tW + 20
+
+						optionF.BorderSizePixel = 0
+						optionF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						optionF.Size = UDim2.new(0, optW, 0, 18)
+						optionF.BackgroundTransparency = 1
+						optionF.LayoutOrder = idx
+						optionF.Name = "Option_" .. optName
+
+						optCircle.BorderSizePixel = 0
+						optCircle.BackgroundColor3 = isSelected and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(92, 140, 114)
+						optCircle.AnchorPoint = Vector2.new(0.5, 0.5)
+						optCircle.Size = UDim2.new(0, 4, 0, 4)
+						optCircle.Position = UDim2.new(0, 5, 0.5, 0)
+						optCircle.Name = "Circle"
+						UICorner15.CornerRadius = UDim.new(1, 0)
+
+						optTxt.TextWrapped = false
+						optTxt.BorderSizePixel = 0
+						optTxt.TextSize = 11
+						optTxt.TextXAlignment = Enum.TextXAlignment.Left
+						optTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						optTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+						optTxt.TextColor3 = isSelected and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(150, 150, 150)
+						optTxt.BackgroundTransparency = 1
+						optTxt.AnchorPoint = Vector2.new(0, 0.5)
+						optTxt.Size = UDim2.new(0, tW, 0, 11)
+						optTxt.Text = optName
+						optTxt.Name = "ThingName"
+						optTxt.Position = UDim2.new(0, 13, 0.5, 0)
+
+						optBtt.BorderSizePixel = 0
+						optBtt.TextTransparency = 1
+						optBtt.TextSize = 1
+						optBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						optBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+						optBtt.AnchorPoint = Vector2.new(0.5, 0.5)
+						optBtt.BackgroundTransparency = 1
+						optBtt.Size = UDim2.new(1, 0, 1, 0)
+						optBtt.Text = ""
+						optBtt.Name = "Btt"
+						optBtt.Position = UDim2.new(0.5, 0, 0.5, 0)
+						optBtt.ZIndex = 4
+
+						OptionFrames[optName] = { frame = optionF, circle = optCircle, txt = optTxt }
+
+						optBtt.MouseButton1Click:Connect(function()
+							Selected[optName] = not Selected[optName]
+							local sel = Selected[optName]
+
+							if sel then
+								table.insert(SelectionOrder, optName)
+							else
+								for i, v in ipairs(SelectionOrder) do
+									if v == optName then table.remove(SelectionOrder, i) break end
+								end
+							end
+
+							TS:Create(optCircle, TweenInfo.new(.15), {
+								BackgroundColor3 = sel and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(92, 140, 114)
+							}):Play()
+							TS:Create(optTxt, TweenInfo.new(.15), {
+								TextColor3 = sel and Color3.fromRGB(168, 255, 208) or Color3.fromRGB(150, 150, 150)
+							}):Play()
+
+							refreshSelectedTags()
+							if IsOpen then updateSizes(true) end
+							task.spawn(function() Callback(optName, sel) end)
+						end)
+					end
+
+					-- Fecha o dropdown e atualiza tudo
+					IsOpen = false
+					ArrowIcon2.Rotation = 180
+
+					task.defer(function()
+						Container.Size = UDim2.new(0, 405, 0, UIListLayout5.AbsoluteContentSize.Y)
+						refreshSelectedTags()
+						updateSizes(false)
+					end)
+				end
+				
+				return MDropdown
 			end
 			
 			function Items:NewSingleDropdown(Text:string, Table:table, CloseAfterClick:boolean, Callback:() -> nil)
@@ -2361,7 +2510,7 @@ function Lib:NewUI()
 					optionF.Name = "Option_" .. optName
 
 					optCircle.BorderSizePixel = 0
-					optCircle.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+					optCircle.BackgroundColor3 = Color3.fromRGB(92, 140, 114)  -- começa desmarcado
 					optCircle.AnchorPoint = Vector2.new(0.5, 0.5)
 					optCircle.Size = UDim2.new(0, 4, 0, 4)
 					optCircle.Position = UDim2.new(0, 5, 0.5, 0)
@@ -2376,7 +2525,7 @@ function Lib:NewUI()
 					optTxt.TextXAlignment = Enum.TextXAlignment.Left
 					optTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					optTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-					optTxt.TextColor3 = Color3.fromRGB(150, 150, 150)
+					optTxt.TextColor3 = Color3.fromRGB(150, 150, 150)  -- começa desmarcado
 					optTxt.BackgroundTransparency = 1
 					optTxt.AnchorPoint = Vector2.new(0, 0.5)
 					optTxt.Size = UDim2.new(0, tW, 0, 11)
@@ -2403,6 +2552,7 @@ function Lib:NewUI()
 					OptionFrames[optName] = { frame = optionF, circle = optCircle, txt = optTxt }
 
 					optBtt.MouseButton1Click:Connect(function()
+						-- se clicar na já selecionada, deseleciona
 						if CurrentSelected == optName then
 							setSelected(nil)
 							task.spawn(function() Callback(nil, nil) end)
@@ -2437,6 +2587,130 @@ function Lib:NewUI()
 				end)
 
 				registerItem(SingleDropdownF, Text, SecContainer)
+				
+				local SDropdown = {}
+
+				function SDropdown:Refresh(Table2: table)
+					Table2 = Table2 or {}
+
+					-- Limpa estado
+					CurrentSelected = nil
+					OptionFrames = {}
+
+					-- Destroi opções antigas
+					for _, child in ipairs(ContainerF:GetChildren()) do
+						if child:IsA("Frame") then
+							child:Destroy()
+						end
+					end
+
+					-- Converte array se necessário (mesmo logic do construtor)
+					local isArray = (#Table2 > 0)
+					if isArray then
+						local converted = {}
+						for _, v in ipairs(Table2) do
+							local name = typeof(v) == "Instance" and v.Name or tostring(v)
+							if converted[name] then
+								local i = 2
+								while converted[name .. i] do i += 1 end
+								name = name .. i
+							end
+							converted[name] = v
+						end
+						Table2 = converted
+					end
+
+					local newOrder = {}
+					for k in pairs(Table2) do
+						table.insert(newOrder, k)
+					end
+					table.sort(newOrder)
+
+					for idx, optName in ipairs(newOrder) do
+						local optVal = Table2[optName]
+
+						local optionF = Instance.new("Frame", ContainerF)
+						local optCircle = Instance.new("Frame", optionF)
+						local UICorner15 = Instance.new("UICorner", optCircle)
+						local optTxt = Instance.new("TextLabel", optionF)
+						local optBtt = Instance.new("TextButton", optionF)
+
+						local tW = game.TextService:GetTextSize(optName, 11, Enum.Font.GothamBold, Vector2.new(math.huge, 11)).X
+						local optW = tW + 20
+
+						optionF.BorderSizePixel = 0
+						optionF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						optionF.Size = UDim2.new(0, optW, 0, 18)
+						optionF.BackgroundTransparency = 1
+						optionF.LayoutOrder = idx
+						optionF.Name = "Option_" .. optName
+
+						optCircle.BorderSizePixel = 0
+						optCircle.BackgroundColor3 = Color3.fromRGB(92, 140, 114)
+						optCircle.AnchorPoint = Vector2.new(0.5, 0.5)
+						optCircle.Size = UDim2.new(0, 4, 0, 4)
+						optCircle.Position = UDim2.new(0, 5, 0.5, 0)
+						optCircle.Name = "Circle"
+						UICorner15.CornerRadius = UDim.new(1, 0)
+
+						optTxt.TextWrapped = false
+						optTxt.BorderSizePixel = 0
+						optTxt.TextSize = 11
+						optTxt.TextXAlignment = Enum.TextXAlignment.Left
+						optTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						optTxt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+						optTxt.TextColor3 = Color3.fromRGB(150, 150, 150)
+						optTxt.BackgroundTransparency = 1
+						optTxt.AnchorPoint = Vector2.new(0, 0.5)
+						optTxt.Size = UDim2.new(0, tW, 0, 11)
+						optTxt.Text = optName
+						optTxt.Name = "ThingName"
+						optTxt.Position = UDim2.new(0, 13, 0.5, 0)
+
+						optBtt.BorderSizePixel = 0
+						optBtt.TextTransparency = 1
+						optBtt.TextSize = 1
+						optBtt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						optBtt.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+						optBtt.AnchorPoint = Vector2.new(0.5, 0.5)
+						optBtt.BackgroundTransparency = 1
+						optBtt.Size = UDim2.new(1, 0, 1, 0)
+						optBtt.Text = ""
+						optBtt.Name = "Btt"
+						optBtt.Position = UDim2.new(0.5, 0, 0.5, 0)
+						optBtt.ZIndex = 4
+
+						OptionFrames[optName] = { frame = optionF, circle = optCircle, txt = optTxt }
+
+						optBtt.MouseButton1Click:Connect(function()
+							if CurrentSelected == optName then
+								setSelected(nil)
+								task.spawn(function() Callback(nil, nil) end)
+							else
+								setSelected(optName)
+								task.spawn(function() Callback(optName, optVal) end)
+							end
+
+							if CloseAfterClick then
+								IsOpen = false
+								TS:Create(ArrowIcon2, TweenInfo.new(.2), { Rotation = 180 }):Play()
+								updateSizes(false)
+							end
+						end)
+					end
+
+					-- Fecha e reseta visual
+					IsOpen = false
+					ArrowIcon2.Rotation = 180
+
+					task.defer(function()
+						ContainerF.Size = UDim2.new(0, 405, 0, UIListLayout5.AbsoluteContentSize.Y)
+						refreshSelected()
+						updateSizes(false)
+					end)
+				end
+
+				return SDropdown
 			end
 			
 			return Items
