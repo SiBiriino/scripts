@@ -6,7 +6,7 @@ local Lib = {}
 function Lib:NewUI()
 	--// Yea i did write this by hand, i want kms
 	
-	local ScreenGui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+	local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
 	local MainF = Instance.new("Frame", ScreenGui)
 	
 	local Shadow = Instance.new("ImageLabel", MainF)
