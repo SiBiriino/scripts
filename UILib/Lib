@@ -438,6 +438,7 @@ function Lib:NewUI()
 
 			task.defer(function()
 				for _, sec in pairs(AllSections) do
+					sec.sectionF.Visible = true
 					sec.secBtt.Active = true
 					sec.arrowIcon.Visible = true
 
@@ -466,8 +467,21 @@ function Lib:NewUI()
 
 		task.defer(function()
 			for _, sec in pairs(AllSections) do
-				local contentHeight = sec.uiListLayout3.AbsoluteContentSize.Y
-				sec.sectionF.Size = UDim2.new(0, 494, 0, 33 + contentHeight)
+				-- Verifica se existe pelo menos 1 item visível nessa seção
+				local hasVisible = false
+				for _, item in pairs(AllItems) do
+					if item.section == sec.uiListLayout3.Parent and item.frame.Visible then
+						hasVisible = true
+						break
+					end
+				end
+
+				sec.sectionF.Visible = hasVisible
+
+				if hasVisible then
+					local contentHeight = sec.uiListLayout3.AbsoluteContentSize.Y
+					sec.sectionF.Size = UDim2.new(0, 494, 0, 33 + contentHeight)
+				end
 			end
 		end)
 	end)
