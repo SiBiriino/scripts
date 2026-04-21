@@ -1503,12 +1503,13 @@ function Lib:NewUI()
 				return Toggle				
 			end
 			
-			function Items:NewSlider(Text:string, Min:number, Max:number, Start:number, Callback:() -> nil)
+			function Items:NewSlider(Text:string, Min:number, Max:number, Start:number, Callback:() -> nil, Step)
 				Text = Text or "New Slider"
 				Min = Min or 0
 				Max = Max or 100
 				Start = Start or 50
 				Callback = Callback or function() end
+				Step = Step or 1
 				
 				local SliderF = Instance.new("Frame", SecContainer)
 				local SliderTxt = Instance.new("TextLabel", SliderF)
@@ -1649,7 +1650,10 @@ function Lib:NewUI()
 				end
 				
 				local function updateSlider(value)
-					value = math.clamp(math.round(value), Min, Max)
+					value = math.round((value - Min) / Step) * Step + Min
+					value = math.clamp(value, Min, Max)
+					value = math.round(value * 1e9) / 1e9
+					
 					currentValue = value
 
 					local percent = (value - Min) / (Max - Min)
