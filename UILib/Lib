@@ -1,3 +1,4 @@
+local Players = cloneref(game:GetService("Players"))
 local TS = game:GetService("TweenService")
 local UIS = game:GetService("UserInputService")
 
@@ -296,7 +297,7 @@ function Lib:NewUI()
 	HeadShot.BackgroundTransparency = 1
 	HeadShot.Name = "HeadShot"
 	HeadShot.Position = UDim2.new(0.5, 0, 0.5, 0)
-	HeadShot.Image = game.Players:GetUserThumbnailAsync(game.Players.LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+	HeadShot.Image = Players:GetUserThumbnailAsync(Players.LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
 	HeadShot.ZIndex = 2
 	
 	UICorner6.CornerRadius = UDim.new(1, 0)
@@ -313,7 +314,7 @@ function Lib:NewUI()
 	PlrNameTxt.AnchorPoint = Vector2.new(0, 0.5)
 	PlrNameTxt.Size = UDim2.new(0, 92, 0, 16)
 	PlrNameTxt.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	PlrNameTxt.Text = game.Players.LocalPlayer.Name
+	PlrNameTxt.Text = Players.LocalPlayer.Name
 	PlrNameTxt.Name = "PlrName"
 	PlrNameTxt.Position = UDim2.new(0.01774, 45, 0.51556, 0)
 	PlrNameTxt.ZIndex = 2
